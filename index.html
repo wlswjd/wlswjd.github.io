@@ -1,22 +1,212 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>98.css example</title>
+  <title>User's Portfolio</title>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
 
 <body>
-  <div class="window" style="margin: 32px; width: 250px">
-    <div class="title-bar">
-      <div class="title-bar-text">
-        My First VB4 Program
-      </div>
+  <header class="site-header">
+      <h1>진정맨's Blog</h1>
+      <div class="header-line"></div>
+  </header>
+
+  <menu role="tablist" class="tab-menu">
+    <li role="tab" aria-selected="true" id="tab-blog-btn" onclick="switchTab('blog')"><a href="#blog">Blog Main</a></li>
+    <li role="tab" aria-selected="false" id="tab-game-btn" onclick="switchTab('game')"><a href="#game">Dino Run</a></li>
+    <li role="tab" aria-selected="false" id="tab-tetris-btn" onclick="switchTab('tetris')"><a href="#tetris">Tetris</a></li>
+  </menu>
+
+  <div class="app-wrapper">
+    
+    <!-- Tab 1: Blog View -->
+    <div id="blog-view" class="tab-view blog-layout active">
+        <!-- Left Sidebar -->
+        <aside class="sidebar-left">
+          <div class="window" style="height: 100%; display: flex; flex-direction: column;">
+            <div class="title-bar"><div class="title-bar-text">Explorer</div></div>
+            <div class="window-body" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                <ul class="tree-view">
+                  <li>
+                    <details open>
+                      <summary onclick="filterPosts('all')"><strong>Categories</strong></summary>
+                      <ul style="padding-left: 20px; margin-top: 4px;">
+                        <li class="tree-item" onclick="filterPosts('papers')">논문 (Papers)</li>
+                        <li class="tree-item" onclick="filterPosts('ml')">머신러닝 (ML)</li>
+                        <li class="tree-item" onclick="filterPosts('dl')">딥러닝 (DL)</li>
+                        <li class="tree-item" onclick="filterPosts('projects')">프로젝트 (Projects)</li>
+                      </ul>
+                    </details>
+                  </li>
+                  <li>
+                    <details>
+                        <summary><strong>Archives</strong></summary>
+                        <ul style="padding-left: 20px; margin-top: 4px;">
+                            <li class="tree-item">2025</li>
+                            <li class="tree-item">2024</li>
+                        </ul>
+                    </details>
+                  </li>
+                  <li class="root-item" style="margin-top: 8px;" onclick="showPage('about')">About Me</li>
+                  <li class="root-item" onclick="showPage('contact')">Contact</li>
+                </ul>
+            </div>
+          </div>
+        </aside>
+    
+        <!-- Main Content (Center) -->
+        <main class="main-content" id="main-content-area">
+          
+            <!-- 1. Post List View -->
+            <div id="post-list-container" class="post-list">
+                <!-- Posts will be injected here by JavaScript -->
+            </div>
+
+            <!-- 2. Article Detail View (Hidden by default) -->
+            <div id="article-detail-container" class="article-view">
+                <div style="margin-bottom: 10px;">
+                    <button onclick="goBackToList()">⬅ Back to List</button>
+                </div>
+                <div class="window" style="flex: 1; display: flex; flex-direction: column;">
+                    <div class="title-bar">
+                        <div class="title-bar-text" id="article-title-bar">Title</div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Close" onclick="goBackToList()"></button>
+                        </div>
+                    </div>
+                    <div class="window-body" style="flex: 1; overflow-y: auto; background: white;">
+                        <h2 id="article-title">Title</h2>
+                        <p id="article-meta" style="color: #666; font-size: 0.9em;">Date | Tech</p>
+                        <hr>
+                        <div id="article-body" class="article-content">
+                            Content goes here...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll to Top Button (Smaller Square) -->
+            <button class="scroll-top-btn" id="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">▲</button>
+
+        </main>
+    
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+            <div class="window">
+                <div class="title-bar"><div class="title-bar-text">Search</div></div>
+                <div class="window-body">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" class="search-input" placeholder="Search..." onkeyup="handleSearch()">
+                        <button onclick="handleSearch()">Go</button>
+                    </div>
+                </div>
+            </div>
+            <div class="window">
+                <div class="title-bar"><div class="title-bar-text">Trending Tags</div></div>
+                <div class="window-body">
+                    <div class="tag-container">
+                        <span class="tag-chip" onclick="filterPosts('python')">#Python</span>
+                        <span class="tag-chip" onclick="filterPosts('ai')">#AI</span>
+                        <span class="tag-chip" onclick="filterPosts('dl')">#DeepLearning</span>
+                        <span class="tag-chip" onclick="filterPosts('web')">#WebDev</span>
+                    </div>
+                </div>
+            </div>
+            <div class="window">
+                 <div class="title-bar"><div class="title-bar-text">System Status</div></div>
+                <div class="window-body">
+                    <p style="margin: 0 0 8px 0;">Last Login: <br>Today</p>
+                    <p style="margin: 0;">Visitors: 1,338</p>
+                    <div class="progress-indicator segmented" style="margin-top: 8px;">
+                        <span class="progress-indicator-bar" style="width: 70%;"></span>
+                    </div>
+                </div>
+            </div>
+        </aside>
     </div>
-    <div class="window-body">
-      <p>Hello, world!</p>
+
+    <!-- Tab 2: Dino Game -->
+    <div id="game-view" class="tab-view game-container">
+        <div class="window" style="width: 800px;">
+            <div class="title-bar">
+                <div class="title-bar-text">DinoJump.exe</div>
+                <div class="title-bar-controls"><button aria-label="Close"></button></div>
+            </div>
+            <div class="window-body" style="text-align: center;">
+                <canvas id="dino-canvas" width="700" height="300"></canvas>
+                <div class="game-controls">
+                    <p>Press <strong>SPACE</strong> to Jump!</p>
+                    <p>Score: <span id="dino-score">0</span></p>
+                    <div style="margin-top: 10px;">
+                        <button id="dino-start-btn" onclick="startDinoGame()">Start Game</button>
+                        <button onclick="resetDinoGame()">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Tab 3: Tetris Game (Redesigned Layout) -->
+    <div id="tetris-view" class="tab-view game-container">
+        <div class="window" style="width: 600px;">
+            <div class="title-bar">
+                <div class="title-bar-text">Tetris.exe</div>
+                <div class="title-bar-controls"><button aria-label="Close"></button></div>
+            </div>
+            <div class="window-body tetris-layout">
+                <!-- Left Sidebar: Statistics / Score -->
+                <div class="tetris-sidebar">
+                    <div class="tetris-panel">
+                        <h4>SCORE</h4>
+                        <div class="tetris-value" id="tetris-score">000000</div>
+                    </div>
+                    <div class="tetris-panel">
+                        <h4>LEVEL</h4>
+                        <div class="tetris-value">00</div>
+                    </div>
+                </div>
+
+                <!-- Center: Main Game Board -->
+                <div class="tetris-main">
+                    <canvas id="tetris-canvas" width="300" height="500" style="background: #000;"></canvas>
+                </div>
+
+                <!-- Right Sidebar: Next Piece & Controls -->
+                <div class="tetris-sidebar">
+                    <div class="tetris-panel">
+                        <h4>NEXT</h4>
+                        <div class="next-piece-preview" id="next-piece-preview">
+                            <canvas id="next-canvas" width="80" height="80"></canvas>
+                        </div>
+                    </div>
+                    <div class="tetris-panel">
+                         <h4>CONTROLS</h4>
+                         <div class="controls-info">
+                             <p>⬅️ Move Left</p>
+                             <p>➡️ Move Right</p>
+                             <p>⬆️ Rotate</p>
+                             <p>⬇️ Drop</p>
+                         </div>
+                    </div>
+                    <div style="margin-top: auto;">
+                        <button id="tetris-start-btn" style="width: 100%; margin-bottom: 4px;" onclick="startTetris()">Start</button>
+                        <button style="width: 100%;" onclick="resetTetrisGame()">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
   </div>
+
+  <!-- Load Scripts -->
+  <script src="scripts/data.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/dino.js"></script>
+  <script src="scripts/tetris.js"></script>
 </body>
 </html>
