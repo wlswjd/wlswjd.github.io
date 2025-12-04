@@ -19,6 +19,75 @@
 
 const posts = [
     {
+        id: 9,
+        category: 'ml',
+        title: '서울시 부동산 가격 예측 프로젝트 회고 with 머신러닝',
+        date: '2025', // 날짜는 velog 원본에 맞춰 수정해주세요
+        tech: 'Python, Scikit-learn, XGBoost, Pandas',
+        summary: '머신러닝을 활용하여 서울시 부동산 실거래가를 예측하는 모델을 구축하고 성능을 최적화한 프로젝트 회고입니다.',
+        content: `
+            <h3>1. Project Overview (프로젝트 개요)</h3>
+            <p>서울시 아파트 실거래가 데이터를 활용하여 가격을 예측하는 회귀 모델을 구축했습니다. 부동산 시장의 불확실성을 줄이고 합리적인 가격 기준을 제시하는 것을 목표로 했습니다.</p>
+            
+            <h3>2. Data & Preprocessing (데이터 및 전처리)</h3>
+            <ul>
+                <li><strong>데이터셋:</strong> 서울시 부동산 실거래가 데이터 (국토교통부 / 공공데이터포털)</li>
+                <li><strong>전처리:</strong> 
+                    <ul>
+                        <li>결측치 처리 (평균값 대체 및 삭제)</li>
+                        <li>이상치 제거 (IQR 방식 활용)</li>
+                        <li>범주형 변수 인코딩 (One-Hot Encoding)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>3. Modeling (모델링)</h3>
+            <p>다양한 회귀 모델을 비교 실험했습니다.</p>
+            <ul>
+                <li>Linear Regression</li>
+                <li>Random Forest Regressor</li>
+                <li>XGBoost / LightGBM</li>
+            </ul>
+            <p>최종적으로 <strong>XGBoost</strong> 모델이 가장 우수한 성능(RMSE 기준)을 보여 선정했습니다.</p>
+
+            <h3>4. Result & Retrospective (결과 및 회고)</h3>
+            <p><strong>성과:</strong> 베이스라인 대비 RMSE를 약 15% 개선했습니다.</p>
+            <p><strong>배운 점:</strong> 파생 변수(예: 지하철역과의 거리, 학군 등) 생성의 중요성을 체감했습니다. 데이터 전처리가 모델 성능에 미치는 영향이 모델 튜닝보다 큼을 확인했습니다.</p>
+            
+            <hr>
+            <p><em>(여기에 Velog의 상세한 내용을 복사해서 붙여넣으시면 됩니다.)</em></p>
+        `
+    },
+    {
+        id: 10,
+        category: 'ml',
+        title: '데이터 분류 및 전처리 실습: 부동산 집값 예측 대회 준비',
+        date: '2025', 
+        tech: 'Python, Pandas, Matplotlib, Seaborn',
+        summary: '부동산 가격 예측 대회를 위해 데이터를 탐색적 데이터 분석(EDA)하고 전처리하는 과정을 정리했습니다.',
+        content: `
+            <h3>1. EDA (탐색적 데이터 분석)</h3>
+            <p>데이터의 분포와 변수 간의 상관관계를 분석했습니다.</p>
+            <ul>
+                <li>Target 변수(가격)의 분포 확인 (Log 변환 필요성 확인)</li>
+                <li>주요 변수(면적, 연식)와 가격의 산점도 시각화</li>
+            </ul>
+
+            <h3>2. Feature Engineering (특성 공학)</h3>
+            <p>기존 변수를 조합하여 새로운 의미를 도출했습니다.</p>
+            <ul>
+                <li><strong>건물 노후도:</strong> 현재 연도 - 준공 연도</li>
+                <li><strong>단지 규모:</strong> 세대수 구간화</li>
+            </ul>
+
+            <h3>3. Insights (인사이트)</h3>
+            <p>단순히 데이터를 넣는 것보다, 도메인 지식을 활용하여 불필요한 변수를 제거했을 때 모델의 안정성이 높아짐을 확인했습니다.</p>
+
+            <hr>
+            <p><em>(여기에 Velog의 상세한 코드나 그래프 설명을 추가하세요.)</em></p>
+        `
+    },
+    {
         id: 1,
         category: 'papers',
         title: '데이터 온톨로지: 지식을 구조화하는 방법',
@@ -55,41 +124,5 @@ const posts = [
         tech: 'HTML, CSS, JS, 98.css',
         summary: '윈도우 98 감성을 살린 포트폴리오 사이트 제작기.',
         content: `<p>98.css 라이브러리를 활용하여 레트로한 느낌의 포트폴리오를 만들었습니다.</p>`
-    },
-    {
-        id: 5,
-        category: 'projects',
-        title: 'FastAPI와 React를 활용한 대시보드 개발',
-        date: 'Sep 10, 2025',
-        tech: 'FastAPI, React, Chart.js',
-        summary: '실시간 데이터를 시각화하는 인터랙티브 대시보드를 개발했습니다.',
-        content: `<p>WebSocket을 이용하여 실시간 데이터 업데이트를 구현했습니다.</p>`
-    },
-    {
-        id: 6,
-        category: 'ml',
-        title: 'Scikit-learn으로 배우는 머신러닝 기초',
-        date: 'Aug 22, 2025',
-        tech: 'Python, Scikit-learn, Pandas',
-        summary: '머신러닝의 기본 개념인 지도 학습과 비지도 학습을 Scikit-learn 라이브러리로 실습해봅니다.',
-        content: `<p>Iris 데이터셋을 활용한 분류 모델 만들기 예제입니다.</p>`
-    },
-    {
-        id: 7,
-        category: 'dl',
-        title: 'PyTorch vs TensorFlow: 딥러닝 프레임워크 비교',
-        date: 'Jul 15, 2025',
-        tech: 'PyTorch, TensorFlow',
-        summary: '현업에서 가장 많이 쓰이는 두 프레임워크의 장단점과 선택 가이드.',
-        content: `<p>PyTorch는 연구용으로, TensorFlow는 배포용으로 많이 쓰였으나 최근 트렌드는...</p>`
-    },
-    {
-        id: 8,
-        category: 'papers',
-        title: 'Attention Is All You Need 리뷰',
-        date: 'Jun 01, 2025',
-        tech: 'Transformer, NLP',
-        summary: 'NLP의 혁명, Transformer 구조를 제안한 논문을 상세하게 리뷰합니다.',
-        content: `<p>Self-Attention 메커니즘의 원리와 이를 통한 병렬 처리의 이점을 설명합니다.</p>`
     }
 ];
