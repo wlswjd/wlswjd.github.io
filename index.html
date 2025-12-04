@@ -17,6 +17,7 @@
 
   <menu role="tablist" class="tab-menu">
     <li role="tab" aria-selected="true" id="tab-blog-btn" onclick="switchTab('blog')"><a href="#blog">Blog Main</a></li>
+    <li role="tab" aria-selected="false" id="tab-cmd-btn" onclick="switchTab('cmd')"><a href="#cmd">CMD</a></li>
     <li role="tab" aria-selected="false" id="tab-game-btn" onclick="switchTab('game')"><a href="#game">Dino Run</a></li>
     <li role="tab" aria-selected="false" id="tab-tetris-btn" onclick="switchTab('tetris')"><a href="#tetris">Tetris</a></li>
   </menu>
@@ -89,7 +90,7 @@
                 </div>
             </div>
             
-            <!-- Scroll to Top Button (Smaller Square) -->
+            <!-- Scroll to Top Button -->
             <button class="scroll-top-btn" id="scroll-top-btn" onclick="scrollToTop()" aria-label="Scroll to top">▲</button>
 
         </main>
@@ -129,7 +130,34 @@
         </aside>
     </div>
 
-    <!-- Tab 2: Dino Game -->
+    <!-- Tab 2: CMD (Terminal) -->
+    <div id="cmd-view" class="tab-view">
+        <div class="window" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+            <div class="title-bar">
+                <div class="title-bar-text">Command Prompt</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body" id="cmd-body">
+                <div id="cmd-output">
+                    <div class="cmd-line">Microsoft Windows [Version 98.0.1219]</div>
+                    <div class="cmd-line">(C) Copyright 1981-1998 Microsoft Corp.</div>
+                    <br>
+                    <div class="cmd-line">C:\Users\Relaxman> type 'help' to start...</div>
+                    <br>
+                </div>
+                <div class="cmd-input-line">
+                    <span class="cmd-prompt">C:\Users\Relaxman></span>
+                    <input type="text" id="cmd-input" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab 3: Dino Game -->
     <div id="game-view" class="tab-view game-container">
         <div class="window" style="width: 800px;">
             <div class="title-bar">
@@ -150,7 +178,7 @@
         </div>
     </div>
 
-    <!-- Tab 3: Tetris Game (Redesigned Layout) -->
+    <!-- Tab 4: Tetris Game -->
     <div id="tetris-view" class="tab-view game-container">
         <div class="window" style="width: 600px;">
             <div class="title-bar">
@@ -158,7 +186,6 @@
                 <div class="title-bar-controls"><button aria-label="Close"></button></div>
             </div>
             <div class="window-body tetris-layout">
-                <!-- Left Sidebar: Statistics / Score -->
                 <div class="tetris-sidebar">
                     <div class="tetris-panel">
                         <h4>SCORE</h4>
@@ -169,13 +196,9 @@
                         <div class="tetris-value">00</div>
                     </div>
                 </div>
-
-                <!-- Center: Main Game Board -->
                 <div class="tetris-main">
                     <canvas id="tetris-canvas" width="300" height="500" style="background: #000;"></canvas>
                 </div>
-
-                <!-- Right Sidebar: Next Piece & Controls -->
                 <div class="tetris-sidebar">
                     <div class="tetris-panel">
                         <h4>NEXT</h4>
@@ -206,6 +229,7 @@
   <!-- Load Scripts -->
   <script src="scripts/data.js"></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/cmd.js"></script>
   <script src="scripts/dino.js"></script>
   <script src="scripts/tetris.js"></script>
 </body>
