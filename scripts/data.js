@@ -89,7 +89,7 @@ const posts = [
     },
     {
         id: 1,
-        category: 'papers',
+        category: 'ml',
         title: '데이터 온톨로지: 지식을 구조화하는 방법',
         date: 'Nov 6, 2025',
         tech: 'rdflib, owlready2, networkx',
@@ -100,7 +100,7 @@ const posts = [
     },
     {
         id: 2,
-        category: 'ml',
+        category: 'code',
         title: 'Alembic으로 시작하는 데이터베이스 마이그레이션',
         date: 'Oct 25, 2025',
         tech: 'Python 3.12+, SQLAlchemy, Alembic',
@@ -124,5 +124,39 @@ const posts = [
         tech: 'HTML, CSS, JS, 98.css',
         summary: '윈도우 98 감성을 살린 포트폴리오 사이트 제작기.',
         content: `<p>98.css 라이브러리를 활용하여 레트로한 느낌의 포트폴리오를 만들었습니다.</p>`
+    },
+    {
+        id: 11,
+        category: 'competition',
+        title: '데이터 경진대회 참여 회고',
+        date: '2024',
+        tech: 'Python, XGBoost, Optuna',
+        summary: '부동산 실거래가 예측 경진대회에서 모델을 고도화하며 얻은 인사이트를 정리했습니다.',
+        content: `
+            <p>대회 참가 배경과 목표를 소개하고, 데이터 분석 및 모델링 전략, 리더보드 성과 등을 순서대로 정리했습니다.</p>
+            <p>하이퍼파라미터 튜닝은 Optuna로 자동화했고, 교차검증 전략을 바꿨을 때 점수가 상승했던 경험을 기록했습니다.</p>
+        `
+    },
+    {
+        id: 12,
+        category: 'contest',
+        title: 'AI 공모전 프로젝트',
+        date: '2024',
+        tech: 'Python, FastAPI, React',
+        summary: '대국민 공모전에서 제출한 AI 기반 서비스 기획 및 구현 내용을 정리했습니다.',
+        content: `
+            <p>사용자 시나리오, 시스템 구성도, 백엔드/프론트엔드 구현 스택, 시연 데모 영상을 포함한 제출 과정을 회고했습니다.</p>
+        `
+    },
+    {
+        id: 13,
+        category: 'sidepr',
+        title: '사이드 프로젝트: 포트폴리오 사이트 고도화',
+        date: '2025',
+        tech: 'HTML, CSS, JavaScript, 98.css',
+        summary: '윈도우 98 감성의 포트폴리오 사이트를 기획·구현하며 얻은 경험을 정리했습니다.',
+        content: `
+            <p>디자인 콘셉트, 기능 요구사항, 98.css 커스터마이징, 게임/터미널 탭 추가 등의 과정을 기록했습니다.</p>
+        `
     }
 ];

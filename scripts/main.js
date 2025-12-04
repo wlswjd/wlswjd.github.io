@@ -4,6 +4,12 @@ const postListContainer = document.getElementById('post-list-container');
 const articleDetailContainer = document.getElementById('article-detail-container');
 const mainContentArea = document.getElementById('main-content-area');
 const scrollTopBtn = document.getElementById('scroll-top-btn');
+const postCountDisplay = document.getElementById('post-count-display');
+
+const categoryGroups = {
+    study: ['ml', 'dl', 'code', 'papers'],
+    project: ['competition', 'contest', 'sidepr', 'projects']
+};
 
 // Initial Render
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,8 +38,9 @@ function filterPosts(category) {
         return;
     }
     
-    // Filter Logic
+    const group = categoryGroups[category];
     const filtered = posts.filter(p => {
+        if (group && group.includes(p.category)) return true;
         if (p.category === category) return true;
         // Check tech tags too for search/tag filtering
         if (p.tech.toLowerCase().includes(category.toLowerCase())) return true;
@@ -70,6 +77,7 @@ function renderHTML(data) {
     
     if (data.length === 0) {
         postListContainer.innerHTML = '<div class="window-body"><p>No posts found.</p></div>';
+        updatePostCountDisplay(0);
         return;
     }
 
@@ -96,6 +104,8 @@ function renderHTML(data) {
         `;
         postListContainer.appendChild(div);
     });
+
+    updatePostCountDisplay(data.length);
 }
 
 function viewPost(id) {
@@ -182,6 +192,7 @@ function showPage(page) {
         `;
     }
     goBackToList(); 
+    updatePostCountDisplay(null);
 }
 
 // Tab Switching Logic
@@ -203,5 +214,14 @@ function switchTab(tabName) {
     const activeView = document.getElementById(`${tabName}-view`);
     if (activeView) {
         activeView.classList.add('active');
+    }
+}
+
+function updatePostCountDisplay(count) {
+    if (!postCountDisplay) return;
+    if (typeof count === 'number') {
+        postCountDisplay.textContent = `현재 글: ${count}개`;
+    } else {
+        postCountDisplay.textContent = '';
     }
 }

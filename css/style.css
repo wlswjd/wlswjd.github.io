@@ -1,3 +1,8 @@
+.is-hidden-tab {
+    display: none !important;
+}
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
 /* Global Styles */
 body {
   margin: 0;
@@ -5,7 +10,7 @@ body {
   background-color: #c0c0c0;
   height: 100vh;
   overflow: hidden;
-  font-family: 'Pixelated MS Sans Serif', Arial, sans-serif;
+  font-family: 'Pretendard', 'Pixelated MS Sans Serif', Arial, sans-serif;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -160,13 +165,37 @@ body {
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 800px;
+  gap: 24px;
+  max-width: 960px;
   margin: 0 auto;
   padding-bottom: 40px;
 }
 
-.post-card { width: 100%; }
+.post-count {
+  max-width: 960px;
+  margin: 0 auto 12px;
+  font-size: 0.95rem;
+  color: #333;
+  font-family: 'Pretendard', 'Pixelated MS Sans Serif', Arial, sans-serif;
+}
+
+.post-card {
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.post-card .window-body {
+  padding: 4px;
+  line-height: 1.6;
+}
+
+.post-card .window-body p {
+  margin-bottom: 12px;
+}
+
+.post-card .title-bar-text {
+  font-size: 1.3em;
+}
 
 /* Article View */
 .article-view {
@@ -180,6 +209,39 @@ body {
 .article-content {
     padding: 20px;
     line-height: 1.6;
+}
+
+.article-content h1 {
+    font-size: 2.4rem;
+    margin-bottom: 12px;
+}
+
+.article-content h2 {
+    font-size: 2rem;
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+.article-content p,
+.article-content li {
+    font-size: 1.1rem;
+}
+
+/* Match detail view background with desktop gray */
+.article-view .window {
+    background: #c0c0c0;
+    border: none;
+}
+.article-view .window-body {
+    background: #c0c0c0;
+    border: 1px solid #000;
+    font-family: 'Pretendard', 'Pixelated MS Sans Serif', Arial, sans-serif;
+}
+
+/* Match detail content background with desktop and outline in black */
+.article-view .window-body * {
+    background: transparent;
+    font-family: 'Pretendard', 'Pixelated MS Sans Serif', Arial, sans-serif;
 }
 
 /* Scroll to Top Button */

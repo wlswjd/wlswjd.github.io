@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>User's Portfolio</title>
+  <title>진정맨's Blog</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/98.css" />
@@ -18,7 +18,7 @@
   <menu role="tablist" class="tab-menu">
     <li role="tab" aria-selected="true" id="tab-blog-btn" onclick="switchTab('blog')"><a href="#blog">Blog Main</a></li>
     <li role="tab" aria-selected="false" id="tab-cmd-btn" onclick="switchTab('cmd')"><a href="#cmd">CMD</a></li>
-    <li role="tab" aria-selected="false" id="tab-game-btn" onclick="switchTab('game')"><a href="#game">Dino Run</a></li>
+    <li role="tab" aria-selected="false" id="tab-game-btn" onclick="switchTab('game')" class="is-hidden-tab"><a href="#game">Dino Run</a></li>
     <li role="tab" aria-selected="false" id="tab-tetris-btn" onclick="switchTab('tetris')"><a href="#tetris">Tetris</a></li>
   </menu>
 
@@ -36,10 +36,27 @@
                     <details open>
                       <summary onclick="filterPosts('all')"><strong>Categories</strong></summary>
                       <ul style="padding-left: 20px; margin-top: 4px;">
-                        <li class="tree-item" onclick="filterPosts('papers')">논문 (Papers)</li>
-                        <li class="tree-item" onclick="filterPosts('ml')">머신러닝 (ML)</li>
-                        <li class="tree-item" onclick="filterPosts('dl')">딥러닝 (DL)</li>
-                        <li class="tree-item" onclick="filterPosts('projects')">프로젝트 (Projects)</li>
+                        <li>
+                          <details open>
+                            <summary style="font-weight: bold;" onclick="filterPosts('study')">STUDY</summary>
+                            <ul style="padding-left: 20px; margin-top: 4px;">
+                              <li class="tree-item" onclick="filterPosts('ml')">머신러닝 (ML)</li>
+                              <li class="tree-item" onclick="filterPosts('dl')">딥러닝 (DL)</li>
+                              <li class="tree-item" onclick="filterPosts('code')">코딩 (CODE)</li>
+                              <li class="tree-item" onclick="filterPosts('papers')">논문 (Papers)</li>
+                            </ul>
+                          </details>
+                        </li>
+                        <li>
+                          <details open>
+                            <summary style="font-weight: bold;" onclick="filterPosts('project')">PROJECT</summary>
+                            <ul style="padding-left: 20px; margin-top: 4px;">
+                              <li class="tree-item" onclick="filterPosts('competition')">경진대회 (Competition)</li>
+                              <li class="tree-item" onclick="filterPosts('contest')">공모전 (Contest)</li>
+                              <li class="tree-item" onclick="filterPosts('sidepr')">사이드프로젝트 (SidePR)</li>
+                            </ul>
+                          </details>
+                        </li>
                       </ul>
                     </details>
                   </li>
@@ -63,6 +80,7 @@
         <main class="main-content" id="main-content-area">
           
             <!-- 1. Post List View -->
+            <div id="post-count-display" class="post-count"></div>
             <div id="post-list-container" class="post-list">
                 <!-- Posts will be injected here by JavaScript -->
             </div>
@@ -158,9 +176,9 @@
     </div>
 
     <!-- Tab 3: Dino Game -->
-    <div id="game-view" class="tab-view game-container">
+    <div id="game-view" class="tab-view game-container is-hidden-tab">
         <div class="window" style="width: 800px;">
-            <div class="title-bar">
+    <div class="title-bar">
                 <div class="title-bar-text">DinoJump.exe</div>
                 <div class="title-bar-controls"><button aria-label="Close"></button></div>
             </div>
@@ -175,7 +193,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+      </div>
     </div>
 
     <!-- Tab 4: Tetris Game -->
