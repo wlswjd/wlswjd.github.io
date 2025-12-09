@@ -131,7 +131,13 @@ function viewPost(id) {
     document.getElementById('article-title-bar').innerText = post.title;
     document.getElementById('article-title').innerText = post.title;
     document.getElementById('article-meta').innerText = `Date: ${post.date} | Tech: ${post.tech}`;
-    document.getElementById('article-body').innerHTML = post.content;
+    
+    // Markdown Parsing
+    if (typeof marked !== 'undefined' && marked.parse) {
+        document.getElementById('article-body').innerHTML = marked.parse(post.content);
+    } else {
+        document.getElementById('article-body').innerHTML = post.content;
+    }
 }
 
 function goBackToList() {
