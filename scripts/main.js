@@ -23,6 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollTopBtn.style.display = 'none';
         }
     });
+
+    // Mascot click: toggle walking animation
+    const mascotContainer = document.getElementById('mascot-container');
+    if (mascotContainer) {
+        mascotContainer.addEventListener('click', () => {
+            mascotContainer.classList.toggle('mascot-paused');
+        });
+    }
 });
 
 function scrollToTop() {

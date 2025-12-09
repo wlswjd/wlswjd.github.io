@@ -259,6 +259,41 @@ body {
     line-height: 20px;
 }
 
+/* Mascot (bottom-right animated character) */
+#mascot-container {
+    position: fixed;
+    right: 20px;
+    bottom: 8px;
+    width: 180px;
+    z-index: 9999;
+    cursor: pointer;
+    user-select: none;
+    animation: mascot-walk 24s linear infinite;
+}
+
+#mascot-container.mascot-paused {
+    animation-play-state: paused;
+}
+
+#mascot-image {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+
+@keyframes mascot-walk {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-160px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 /* Utils */
 .search-bar { display: flex; gap: 4px; }
 .search-input { flex: 1; padding: 2px; }
