@@ -235,13 +235,13 @@ body {
 .article-view .window-body {
     background: #c0c0c0;
     border: 1px solid #000;
-    font-family: 'Pretendard', 'Pixelated MS Sans Serif', Arial, sans-serif;
+    font-family: 'Pretendard', sans-serif;
 }
 
 /* Match detail content background with desktop and outline in black */
 .article-view .window-body * {
     background: transparent;
-    font-family: 'Pretendard', 'Pixelated MS Sans Serif', Arial, sans-serif;
+    font-family: 'Pretendard', sans-serif;
 }
 
 /* Scroll to Top Button */
