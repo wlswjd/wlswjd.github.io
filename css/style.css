@@ -113,6 +113,10 @@ body {
   border-bottom-color: #dfdfdf;
   height: 100%;
   overflow-y: auto;
+  font-family: 'Pretendard', sans-serif; /* 사이드바도 깔끔하게 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 
 .tree-view ul { list-style-type: none; padding-left: 0; margin: 0; }
@@ -166,13 +170,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 960px;
+  width: 100%;
   margin: 0 auto;
   padding-bottom: 40px;
 }
 
 .post-count {
-  max-width: 960px;
+  width: 100%;
   margin: 0 auto 12px;
   font-size: 0.95rem;
   color: #333;
@@ -187,6 +191,11 @@ body {
 .post-card .window-body {
   padding: 4px;
   line-height: 1.6;
+  font-family: 'Pretendard', sans-serif; /* 글 목록도 깔끔하게 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.02em;
 }
 
 .post-card .window-body p {
@@ -211,7 +220,14 @@ body {
     background: #c0c0c0;
     border: 1px solid #000;
     font-family: 'Pretendard', sans-serif;
-    padding: 24px; /* 여백 추가 */
+    padding: 24px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    /* 내용물 전체를 가운데 정렬하기 위해 flex 사용 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 /* Match detail content background with desktop and outline in black */
@@ -220,12 +236,38 @@ body {
     font-family: 'Pretendard', sans-serif;
 }
 
+/* 제목과 메타 정보 너비 제한 해제 */
+#article-title, 
+#article-meta, 
+.article-view hr {
+    width: 100%;
+    max-width: none; /* 제한 해제 */
+    text-align: left;
+    box-sizing: border-box;
+}
+
+#article-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .article-content {
     padding: 20px 0;
-    line-height: 1.8; /* 줄 간격 넉넉하게 */
-    color: #333;      /* 너무 새카만 색 대신 짙은 회색 */
-    max-width: 800px; /* 글 너비 제한 (가독성 핵심) */
-    margin: 0 auto;   /* 가운데 정렬 */
+    line-height: 1.8;
+    color: #222;      
+    width: 100%;      
+    max-width: none;  /* 제한 해제 */
+    text-align: left; 
+    letter-spacing: -0.02em; 
+}
+
+.article-content {
+    padding: 20px 0;
+    line-height: 1.8;
+    color: #222;      /* 조금 더 진한 회색으로 가독성 UP */
+    max-width: 800px;
+    margin: 0 auto;
+    letter-spacing: -0.02em; /* 자간을 좁혀서 단단한 느낌 */
 }
 
 /* Typography for Article Content (Markdown Styles) */
