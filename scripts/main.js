@@ -132,11 +132,41 @@ function viewPost(id) {
     document.getElementById('article-title').innerText = post.title;
     document.getElementById('article-meta').innerText = `Date: ${post.date} | Tech: ${post.tech}`;
     
-    // Markdown Parsing
-    if (typeof marked !== 'undefined' && marked.parse) {
-        document.getElementById('article-body').innerHTML = marked.parse(post.content);
+    const articleBody = document.getElementById('article-body');
+
+    // Markdown Parsing & Math Rendering Logic
+    if (typeof marked !== 'undefined') {
+        let content = post.content;
+
+        // 1. 수식($...$, $$...$$)을 잠시 임시 토큰으로 숨기기 (마크다운 파서가 건드리지 못하게)
+        const mathExpressions = [];
+        const protectedContent = content.replace(/(\$\$[\s\S]+?\$\$)|(\$[^\$\n]+\$)/g, (match) => {
+            mathExpressions.push(match);
+            return `MATH_TOKEN_${mathExpressions.length - 1}_`;
+        });
+
+        // 2. 마크다운 변환 (이제 수식은 안전함)
+        let htmlContent = marked.parse(protectedContent);
+
+        // 3. 수식 복구
+        htmlContent = htmlContent.replace(/MATH_TOKEN_(\d+)_/g, (match, index) => {
+            return mathExpressions[index];
+        });
+
+        articleBody.innerHTML = htmlContent;
+        
+        // 4. KaTeX 렌더링 적용
+        if (typeof renderMathInElement !== 'undefined') {
+            renderMathInElement(articleBody, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
     } else {
-        document.getElementById('article-body').innerHTML = post.content;
+        articleBody.innerHTML = post.content;
     }
 }
 
