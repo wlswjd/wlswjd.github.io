@@ -48,8 +48,7 @@ const posts = [
         content: `
 ### 1. Overview (연구 배경)
 
-진행 중인 
-
+진행 중인 유튜브채널분석에서 댓글의 자연어 수집 후 분석에 앞서 텍스트를 기계가 이해할 수 있는 숫자(Vector)로 변환하는 과정의 원리를 이해하기 위해 해당 논문을 분석하고 구현 목표를 수립함.
 기존의 One-hot Encoding 방식은 단어 간의 유의미한 관계(Semantic Relationship)를 담지 못하고 차원이 너무 커지는 문제가 있다. 이에 따라 분산 표현(Distributed Representation)의 시초이자, 효율적인 연산량을 자랑하는 **Word2Vec (Mikolov et al., 2013)** 논문을 선정하여 분석하고 구현 목표를 수립했다.
 
 ### 2. Problems & Solutions (문제와 해결)
