@@ -44,11 +44,11 @@ const posts = [
         title: '[논문 리뷰] Word2Vec: Efficient Estimation of Word Representations in Vector Space',
         date: 'Jan 14, 2026',
         tech: 'NLP, Deep Learning, Word2Vec, Numpy',
-        summary: '채널십오야 댓글 분석을 위한 첫걸음. 방대한 텍스트 데이터를 효율적으로 벡터화하는 CBOW와 Skip-gram 모델의 수학적 원리와 학습 최적화 기법(Negative Sampling) 분석.',
+        summary: '구문(프로젝트 내에서는 댓글과 같은)의 방대한 텍스트 데이터를 효율적으로 벡터화하는 CBOW와 Skip-gram 모델의 수학적 원리와 학습 최적화 기법(Negative Sampling) 분석.',
         content: `
 ### 1. Overview (연구 배경)
 
-진행 중인 **'채널십오야 유튜브 데이터 분석 프로젝트'**에서 댓글의 의미를 파악하기 위해서는 텍스트를 기계가 이해할 수 있는 숫자(Vector)로 변환하는 과정이 필수적이다.
+진행 중인 
 
 기존의 One-hot Encoding 방식은 단어 간의 유의미한 관계(Semantic Relationship)를 담지 못하고 차원이 너무 커지는 문제가 있다. 이에 따라 분산 표현(Distributed Representation)의 시초이자, 효율적인 연산량을 자랑하는 **Word2Vec (Mikolov et al., 2013)** 논문을 선정하여 분석하고 구현 목표를 수립했다.
 
