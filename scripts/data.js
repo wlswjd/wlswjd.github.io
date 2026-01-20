@@ -68,7 +68,7 @@ const posts = [
 논문은 두 가지 아키텍처를 제안한다.
 
 ![CBOW vs Skip-gram Architecture](assets/CBOW_and_SKIPGRAM.png)
-*Figure 1. The architecture of CBOW and Skip-gram*
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 1. The architecture of CBOW and Skip-gram</em></p>
 
 #### (1) CBOW (Continuous Bag-of-Words)
 - **개념:** 주변 단어들(Context)의 벡터를 평균(Average)내어 중심 단어(Target)를 예측한다.
@@ -109,7 +109,8 @@ $$ J(\\theta) = - \\log \\sigma({u_{target}}^T \\cdot v_{center}) - \\sum_{k=1}^
 - **Next Step:** 이론 학습은 끝났다. 다음 포스팅에서는 위에서 유도한 Negative Sampling Loss 수식을 **Python Numpy로 직접 구현**하여, 실제 댓글 데이터가 벡터 공간에서 어떻게 군집화되는지 시각화해 볼 것이다.
 
 ---
-*Reference: [Efficient Estimation of Word Representations in Vector Space (Mikolov et al., 2013)](https://arxiv.org/abs/1301.3781)*
+*Reference1: [Efficient Estimation of Word Representations in Vector Space (Mikolov et al., 2013)](https://arxiv.org/abs/1301.3781)*
+*Reference2: [Distributed Representations of Words and Phrases and their Compositionality (Mikolov et al., 2013)](https://arxiv.org/abs/1310.4546)*
         `
     },
     {
