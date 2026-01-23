@@ -284,6 +284,12 @@ body {
 .article-content h1 { font-size: 2.2em; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
 .article-content h2 { font-size: 1.8em; border-bottom: 1px solid #eee; padding-bottom: 8px; }
 .article-content h3 { font-size: 1.4em; }
+.article-content h4 { 
+    font-size: 1.2em; 
+    margin-top: 1.2em; 
+    margin-bottom: 0.5em; 
+    color: #333;
+}
 
 .article-content p {
     margin-bottom: 1.2em;
