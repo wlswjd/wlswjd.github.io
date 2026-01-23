@@ -96,12 +96,16 @@ CLIP-RT는 GPT-4를 활용해 50개의 기본 동작을 899개의 다양한 자�
 
 ### 4. Experiments (실험 및 결과)
 
-가장 흥미로웠던 점은 **Novel Task(새로운 과제)** 수행 능력임.
+가장 흥미로웠던 점은 <strong>Novel Task(새로운 과제)</strong> 수행 능력임.
+
+![CLIP-RT Success Rate](assets/CLIP-RT_success_rate.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 3. Success rates on 9 novel tasks (Comparison with OpenVLA)</em></p>
+
 "장난감 자동차 가지고 놀기", "칠판 지우기" 등 학습 때 보지 못한 새로운 과제에서도 CLIP-RT는 OpenVLA보다 월등한 성능(성공률 53% vs 29%)을 보임.
 
-이는 CLIP-RT가 다양한 작업을 학습하며 **공통된 동작 구조(Shared Structure)**를 언어를 통해 잘 배웠기 때문으로 분석됨.
+이는 CLIP-RT가 다양한 작업을 학습하며 <strong>공통된 동작 구조(Shared Structure)</strong>를 언어를 통해 잘 배웠기 때문으로 분석됨.
 
-또한, 로봇이 실수를 할 때 사람이 "그리퍼를 90도 돌려"라고 말로 피드백을 주면, 이를 즉각 반영하여 성공률이 크게 오르는 **협업 능력**도 확인됨.
+또한, 로봇이 실수를 할 때 사람이 "그리퍼를 90도 돌려"라고 말로 피드백을 주면, 이를 즉각 반영하여 성공률이 크게 오르는 <strong>협업 능력</strong>도 확인됨.
 
 ### 5. Conclusion & Insight (결론 및 배운 점)
 
