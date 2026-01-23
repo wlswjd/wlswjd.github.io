@@ -263,43 +263,6 @@ $$ J(\\theta) = - \\log \\sigma({u_{target}}^T \\cdot v_{center}) - \\sum_{k=1}^
         `
     },
     {
-        id: 1,
-        category: 'ml',
-        title: '데이터 온톨로지: 지식을 구조화하는 방법',
-        date: 'Nov 6, 2025',
-        tech: 'rdflib, owlready2, networkx',
-        summary: '데이터 온톨로지(Data Ontology)는 특정 도메인의 개념과 그 관계를 형식적으로 정의한 지식 표현 체계다...',
-        content: `
-데이터 온톨로지는 지식을 구조화하는 핵심 기술입니다.
-
-RDF, OWL 등을 사용하여 그래프 형태로 지식을 연결합니다.
-
-주요 개념: Class, Property, Individual...
-        `
-    },
-    {
-        id: 2,
-        category: 'code',
-        title: 'Alembic으로 시작하는 데이터베이스 마이그레이션',
-        date: 'Oct 25, 2025',
-        tech: 'Python 3.12+, SQLAlchemy, Alembic',
-        summary: 'TL;DR Alembic은 SQLAlchemy 기반의 데이터베이스 마이그레이션 도구입니다. 스키마 변경을 버전 관리하듯이...',
-        content: `
-데이터베이스 스키마 변경을 Git처럼 관리하고 싶다면 Alembic이 정답입니다.
-        `
-    },
-    {
-        id: 3,
-        category: 'dl',
-        title: 'PostgreSQL: 오픈소스 데이터베이스의 강자',
-        date: 'Oct 17, 2025',
-        tech: 'Docker, PostgreSQL 16.0',
-        summary: 'PostgreSQL은 강력한 오픈소스 객체-관계형 데이터베이스 시스템(ORDBMS)입니다...',
-        content: `
-PostgreSQL은 단순한 RDBMS를 넘어 강력한 확장성과 기능을 제공합니다.
-        `
-    },
-    {
         id: 4,
         category: 'projects',
         title: '나만의 포트폴리오 사이트 만들기',
