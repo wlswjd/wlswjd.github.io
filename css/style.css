@@ -432,6 +432,7 @@ canvas {
     flex: 1;
     display: flex;
     flex-direction: column;
+    font-size: 18px; /* 전체 CMD 폰트 크기 증가 */
 }
 
 #cmd-output {
@@ -461,7 +462,7 @@ canvas {
     border: none;
     color: #c0c0c0;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
+    font-size: 18px; /* 폰트 크기 증가 */
     width: 100%;
     outline: none;
     caret-color: #c0c0c0;

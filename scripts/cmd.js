@@ -6,9 +6,32 @@ let cmdHistory = [];
 let historyIndex = -1;
 
 // Focus input on click
-cmdBody.addEventListener('click', () => cmdInput.focus());
+cmdBody.addEventListener('click', () => {
+    // If game is active, don't focus input to prevent virtual keyboard on mobile
+    // or just let it focus but handle keys separately
+    if (!typeof RogueGame !== 'undefined' && !RogueGame.isActive) {
+        cmdInput.focus();
+    } else {
+        cmdInput.focus();
+    }
+});
 
 cmdInput.addEventListener('keydown', (e) => {
+    // 1. Rogue Game Input Handling
+    if (typeof RogueGame !== 'undefined' && RogueGame.isActive) {
+        e.preventDefault();
+        
+        if (e.key === 'Escape') {
+            RogueGame.isActive = false;
+            printOutput("Exited Rogue.");
+            return;
+        }
+        
+        RogueGame.handleInput(e.key);
+        return;
+    }
+
+    // 2. Normal Terminal Input Handling
     if (e.key === 'Enter') {
         const command = cmdInput.value.trim();
         if (command) {
@@ -35,15 +58,37 @@ cmdInput.addEventListener('keydown', (e) => {
     }
 });
 
-function printOutput(text, isHtml = false) {
-    const div = document.createElement('div');
-    div.className = 'cmd-line';
-    if (isHtml) {
-        div.innerHTML = text;
-    } else {
-        div.textContent = text;
+function printOutput(text, isHtml = false, clear = false) {
+    if (clear) {
+        cmdOutput.innerHTML = '';
     }
-    cmdOutput.appendChild(div);
+    
+    if (text.includes('\n')) {
+        // Multi-line output (like game render)
+        const div = document.createElement('div');
+        div.className = 'cmd-line';
+        div.style.whiteSpace = 'pre'; // Preserve formatting
+        div.style.fontFamily = '"Courier New", monospace';
+        div.style.lineHeight = '1.2';
+        
+        if (isHtml) {
+            div.innerHTML = text;
+        } else {
+            div.textContent = text;
+        }
+        cmdOutput.appendChild(div);
+    } else {
+        // Single line output
+        const div = document.createElement('div');
+        div.className = 'cmd-line';
+        if (isHtml) {
+            div.innerHTML = text;
+        } else {
+            div.textContent = text;
+        }
+        cmdOutput.appendChild(div);
+    }
+    
     cmdBody.scrollTop = cmdBody.scrollHeight;
 }
 
@@ -64,6 +109,7 @@ function processCommand(cmd) {
             printOutput('  about    - Show about info');
             printOutput('  contact  - Show contact info');
             printOutput('  game     - Start a mini game (game [dino|tetris])');
+            printOutput('  rogue    - Play Mini-Rogue (rogue play)');
             printOutput('  ls       - List directory contents');
             break;
         case 'cls':
@@ -119,9 +165,20 @@ function processCommand(cmd) {
                 printOutput('Usage: game [dino|tetris]');
             }
             break;
+        case 'rogue':
+        case 'rouge': // Typo tolerance
+            if (args[1] === 'play') {
+                cmdOutput.innerHTML = ''; // Clear screen for game
+                printOutput("Initializing Mini-Rogue v1.0...", false);
+                setTimeout(() => {
+                    RogueGame.init((text, clear) => printOutput(text, true, clear));
+                }, 500);
+            } else {
+                printOutput("Usage: rogue play");
+            }
+            break;
         default:
             printOutput(`'${command}' is not recognized as an internal or external command.`);
             break;
     }
 }
-
