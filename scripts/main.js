@@ -51,7 +51,9 @@ function filterPosts(category) {
         if (group && group.includes(p.category)) return true;
         if (p.category === category) return true;
         // Check tech tags too for search/tag filtering
-        if (p.tech.toLowerCase().includes(category.toLowerCase())) return true;
+        // p.tech가 "HTML"일 때 "ml"이 포함되는 문제 해결을 위해 정확히 분리해서 비교
+        const techList = p.tech.split(',').map(t => t.trim().toLowerCase());
+        if (techList.includes(category.toLowerCase())) return true;
         return false;
     });
     

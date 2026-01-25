@@ -279,106 +279,87 @@ $$ J(\\theta) = - \\log \\sigma({u_{target}}^T \\cdot v_{center}) - \\sum_{k=1}^
     },
     {
         id: 9,
-        category: 'ml',
-        title: '서울시 부동산 가격 예측 프로젝트 회고 with 머신러닝',
-        date: '2025',
-        tech: 'Python, Scikit-learn, XGBoost, Pandas',
-        summary: '머신러닝을 활용하여 서울시 부동산 실거래가를 예측하는 모델을 구축하고 성능을 최적화한 프로젝트 회고입니다.',
-        content: `
-### 1. Project Overview (프로젝트 개요)
-
-서울시 아파트 실거래가 데이터를 활용하여 가격을 예측하는 회귀 모델을 구축했습니다. 부동산 시장의 불확실성을 줄이고 합리적인 가격 기준을 제시하는 것을 목표로 했습니다.
-
-### 2. Data & Preprocessing (데이터 및 전처리)
-
-- **데이터셋:** 서울시 부동산 실거래가 데이터 (국토교통부 / 공공데이터포털)
-- **전처리:** 
-    - 결측치 처리 (평균값 대체 및 삭제)
-    - 이상치 제거 (IQR 방식 활용)
-    - 범주형 변수 인코딩 (One-Hot Encoding)
-
-### 3. Modeling (모델링)
-
-다양한 회귀 모델을 비교 실험했습니다.
-
-- Linear Regression
-- Random Forest Regressor
-- XGBoost / LightGBM
-
-최종적으로 **XGBoost** 모델이 가장 우수한 성능(RMSE 기준)을 보여 선정했습니다.
-
-### 4. Result & Retrospective (결과 및 회고)
-
-- **성과:** 베이스라인 대비 RMSE를 약 15% 개선했습니다.
-- **배운 점:** 파생 변수(예: 지하철역과의 거리, 학군 등) 생성의 중요성을 체감했습니다. 데이터 전처리가 모델 성능에 미치는 영향이 모델 튜닝보다 큼을 확인했습니다.
-
----
-*(여기에 Velog의 상세한 내용을 복사해서 붙여넣으시면 됩니다.)*
-        `
-    },
-    {
-        id: 10,
-        category: 'ml',
-        title: '데이터 분류 및 전처리 실습: 부동산 집값 예측 대회 준비',
-        date: '2025', 
-        tech: 'Python, Pandas, Matplotlib, Seaborn',
-        summary: '부동산 가격 예측 대회를 위해 데이터를 탐색적 데이터 분석(EDA)하고 전처리하는 과정을 정리했습니다.',
-        content: `
-### 1. EDA (탐색적 데이터 분석)
-
-데이터의 분포와 변수 간의 상관관계를 분석했습니다.
-
-- Target 변수(가격)의 분포 확인 (Log 변환 필요성 확인)
-- 주요 변수(면적, 연식)와 가격의 산점도 시각화
-
-### 2. Feature Engineering (특성 공학)
-
-기존 변수를 조합하여 새로운 의미를 도출했습니다.
-
-- **건물 노후도:** 현재 연도 - 준공 연도
-- **단지 규모:** 세대수 구간화
-
-### 3. Insights (인사이트)
-
-단순히 데이터를 넣는 것보다, 도메인 지식을 활용하여 불필요한 변수를 제거했을 때 모델의 안정성이 높아짐을 확인했습니다.
-
----
-*(여기에 Velog의 상세한 코드나 그래프 설명을 추가하세요.)*
-        `
-    },
-    {
-        id: 4,
-        category: 'projects',
-        title: '나만의 포트폴리오 사이트 만들기',
-        date: 'Dec 4, 2025',
-        tech: 'HTML, CSS, JS, 98.css',
-        summary: '윈도우 98 감성을 살린 포트폴리오 사이트 제작기.',
-        content: `
-98.css 라이브러리를 활용하여 레트로한 느낌의 포트폴리오를 만들었습니다.
-        `
-    },
-    {
-        id: 11,
         category: 'competition',
-        title: '데이터 경진대회 참여 회고',
-        date: '2024',
-        tech: 'Python, XGBoost, Optuna',
-        summary: '부동산 실거래가 예측 경진대회에서 모델을 고도화하며 얻은 인사이트를 정리했습니다.',
+        title: '서울시 부동산 가격 예측 프로젝트 회고 with 머신러닝',
+        date: 'May 18, 2025',
+        tech: 'Python, Scikit-learn, XGBoost, AutoGluon, Pandas',
+        summary: '공공데이터를 활용하여 서울시 아파트 실거래가를 예측하는 모델을 구축하고, 데이터 전처리부터 AutoML까지의 과정을 정리함.',
         content: `
-대회 참가 배경과 목표를 소개하고, 데이터 분석 및 모델링 전략, 리더보드 성과 등을 순서대로 정리했습니다.
+부트캠프에서 진행한 머신러닝 경진대회를 통해, 공공데이터를 기반으로 서울시 아파트 가격을 예측하는 프로젝트를 수행함. 데이터 전처리부터 모델링, 그리고 AutoML까지의 흐름을 정리해봄.
 
-하이퍼파라미터 튜닝은 Optuna로 자동화했고, 교차검증 전략을 바꿨을 때 점수가 상승했던 경험을 기록했습니다.
-        `
-    },
-    {
-        id: 12,
-        category: 'contest',
-        title: 'AI 공모전 프로젝트',
-        date: '2024',
-        tech: 'Python, FastAPI, React',
-        summary: '대국민 공모전에서 제출한 AI 기반 서비스 기획 및 구현 내용을 정리했습니다.',
-        content: `
-사용자 시나리오, 시스템 구성도, 백엔드/프론트엔드 구현 스택, 시연 데모 영상을 포함한 제출 과정을 회고했습니다.
+---
+
+### 1. Overview (프로젝트 개요)
+
+*   **목표:** 서울시 아파트 실거래가 데이터를 활용하여 가격을 예측하는 회귀 모델 구축
+*   **데이터셋:**
+    *   \`train.csv\`: 학습용 데이터 (약 111만 건)
+    *   \`test.csv\`: 예측용 테스트 데이터 (약 9천 건)
+    *   \`bus_feature.csv\`, \`subway_feature.csv\`: 주변 대중교통 정보
+
+### 2. EDA & Preprocessing (데이터 탐색 및 전처리)
+
+데이터를 분석하기 전, 먼저 타겟 변수(거래금액)의 분포와 결측치 현황을 파악함.
+
+#### [A] 데이터 분포 확인
+가장 먼저 타겟 값인 '거래금액'의 분포를 확인해보니, 왼쪽으로 치우친 형태를 보임. 이를 정규분포에 가깝게 만들기 위해 로그 변환(Log Transformation)이 필요함을 확인함.
+
+![Target Distribution](assets/house1.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 1. Target Variable Distribution</em></p>
+
+#### [B] 결측치(Missing Values) 처리
+데이터셋에 포함된 결측치를 시각화하여 확인. '임대보증금' 등 결측 비율이 높은 변수는 중앙값으로 대체하거나 제거하는 전략을 수립함.
+
+![Missing Values Heatmap](assets/house2.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 2. Missing Values Heatmap</em></p>
+
+#### [C] 상관관계 분석 (Correlation)
+변수 간의 상관관계를 분석하여 타겟 변수와 연관성이 높은 피처를 선별함. 붉은색에 가까울수록 상관관계가 높음을 의미함.
+
+![Correlation Matrix](assets/house3.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 3. Correlation Matrix</em></p>
+
+#### [D] 이상치 처리 및 파생변수 생성
+*   **이상치(Outlier):** 전용면적 대비 거래금액이 비정상적으로 낮거나 높은 데이터를 IQR 방식으로 제거함.
+*   **파생변수:** '건축년도'만으로는 부족하여 \`2025 - 건축년도\`를 계산해 **'건물 나이(Building Age)'** 변수를 생성함.
+
+![Area vs Price Scatter Plot](assets/house4.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 4. 전용면적 vs 거래금액 산점도 (이상치 제거 전후 비교)</em></p>
+
+### 3. Modeling Strategy (모델링 전략)
+
+#### [A] Baseline Modeling
+*   **LightGBM**을 베이스라인 모델로 선정.
+*   \`num_leaves\`, \`max_depth\`, \`learning_rate\` 등을 Grid Search로 최적화.
+*   Early Stopping을 적용하여 과적합을 방지함.
+
+#### [B] Ensemble & AutoML
+단일 모델의 한계를 극복하기 위해 여러 모델을 조합함.
+1.  **Weighted Average:** LGBM, XGBoost, CatBoost의 예측값을 가중 평균.
+2.  **AutoML (AutoGluon):** Amazon의 AutoML 프레임워크인 AutoGluon을 활용하여 Stacking 및 Bagging을 자동으로 수행.
+
+\`\`\`python
+from autogluon.tabular import TabularPredictor
+predictor = TabularPredictor(label='거래금액(만원)', eval_metric='rmse').fit(train_data=train_df)
+\`\`\`
+
+### 4. Result (실험 결과)
+
+다양한 모델 실험 결과, AutoML을 적용했을 때 가장 우수한 성능을 보임.
+
+![Model Performance](assets/house5.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 5. Model Performance Comparison</em></p>
+
+최종적으로 리더보드 제출을 위해 학습된 모델의 피처 중요도(Feature Importance)를 분석하고, 결과를 시각화하여 제출함.
+
+![Final Result](assets/house6.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 6. Final Prediction Results & Feature Importance</em></p>
+
+### 5. Conclusion & Insight (회고)
+
+*   **데이터 전처리의 중요성:** EDA와 피처 엔지니어링에 가장 많은 시간을 쏟았고, 실제로 모델 튜닝보다 전처리가 성능 향상에 더 큰 영향을 줌.
+*   **AutoML의 강력함:** 베이스라인 모델을 빠르게 구축하고, 앙상블을 통해 성능을 극대화하는 데 매우 유용했음.
+*   **향후 계획:** 시계열성을 고려한 모델링이나, 서울시 구별로 모델을 분리하여 학습시키는 방법을 시도해볼 예정임.
         `
     },
     {
