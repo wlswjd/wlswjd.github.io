@@ -551,5 +551,131 @@ train_transform = A.Compose([
 ![Result](assets/recsys2.png)
 <p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 3. Final Leaderboard Result</em></p>
         `
+    },
+    {
+        id: 19,
+        category: 'book',
+        title: '25년 6월의 책 : 운동의 뇌과학 (Spark)',
+        date: 'Jun 30, 2025',
+        tech: 'Book Review, Neuroscience, Health',
+        summary: '운동이 뇌세포를 어떻게 깨우는지, 스트레스와 우울증을 없애고 집중력을 높이는 과학적 원리를 탐구함.',
+        content: `
+![운동의 뇌과학](assets/운동의 뇌과학.jpeg)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>운동의 뇌과학 (Spark) - 존 레이티</em></p>
+
+### 1. Overview
+저자 존 레이티(John J. Ratey)는 하버드 의대 교수로, "운동은 몸이 아니라 뇌를 위해 하는 것"이라고 주장함. 단순히 살을 빼기 위해서가 아니라, 뇌의 기능을 최적화하기 위해 운동이 필수적임을 과학적 증거로 제시함.
+
+### 2. Insight
+규칙적인 유산소 운동이 뇌의 비료라고 불리는 **BDNF(뇌유래신경영양인자)** 생성을 촉진한다는 사실이 인상적임. 운동 직후에 집중력과 학습 능력이 극대화된다는 점을 알게 되어, 코딩 공부 전에 가볍게 러닝을 하는 습관을 들이게 됨.
+
+### 3. Conclusion
+개발자로서 책상 앞에 앉아 있는 시간이 많지만, 머리가 멍해질 때 커피보다 운동이 더 강력한 각성제라는 것을 깨달음. **"운동은 뇌를 위한 최고의 투자다."**
+        `
+    },
+    {
+        id: 20,
+        category: 'book',
+        title: '25년 7월의 책 : 넥서스 (Nexus)',
+        date: 'Jul 31, 2025',
+        tech: 'Book Review, History, AI, Information Network',
+        summary: '유발 하라리의 신작. 정보 네트워크가 인류 역사를 어떻게 연결하고 단절시켰는지, 그리고 AI 시대에 우리가 나아갈 방향을 제시함.',
+        content: `
+![넥서스](assets/넥서스.jpeg)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>넥서스 (Nexus) - 유발 하라리</em></p>
+
+### 1. Overview
+<사피엔스>의 저자 유발 하라리가 '정보(Information)'라는 키워드로 인류의 역사를 재해석함. 정보가 어떻게 인간을 연결(Nexus)하면서 동시에 통제하고 단절시킬 수 있는지를 다룸.
+
+### 2. Insight
+AI는 단순한 도구가 아니라, 스스로 결정을 내리고 새로운 아이디어를 만들어낼 수 있는 **행위자(Agent)**라는 관점이 충격적임. 정보 네트워크가 권력의 도구가 되지 않도록 견제와 균형 시스템을 만드는 것이 미래 인류의 생존 과제임을 역설함.
+
+### 3. Conclusion
+AI 개발자로서 기술의 발전만 쫓을 것이 아니라, 그 기술이 사회적 맥락(Context) 안에서 어떤 파장을 일으킬지 끊임없이 질문해야 함을 느낌.
+        `
+    },
+    {
+        id: 21,
+        category: 'book',
+        title: '25년 8월의 책 : 물고기는 존재하지 않는다 (Why Fish Don\'t Exist)',
+        date: 'Aug 31, 2025',
+        tech: 'Book Review, Science, Philosophy, Memoir',
+        summary: '분류학자 데이비드 스타 조던의 삶을 통해 질서와 혼돈, 그리고 인간의 집착에 대해 질문을 던지는 과학 에세이이자 회고록.',
+        content: `
+![물고기는 존재하지 않는다](assets/물고기는 존재하지 않는다.jpeg)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>물고기는 존재하지 않는다 (Why Fish Don't Exist) - 룰루 밀러</em></p>
+
+### 1. Overview
+분류학에 미쳐있던 과학자 데이비드 스타 조던의 전기를 추적하는 척하다가, 후반부에 독자의 뒤통수를 강하게 때리는 책. '어류(Fish)'라는 생물학적 범주는 존재하지 않는다는 과학적 사실을 철학적 깨달음으로 연결함.
+
+### 2. Insight
+우리는 세상을 이해하기 위해 끊임없이 범주화하고 꼬리표(Label)를 붙이지만, 자연은 그런 인간의 질서에 무관심함. 혼돈 속에서도 꿋꿋이 자신의 삶을 살아가는 것, 그리고 고정관념을 깨부수는 용기가 중요함을 배움.
+
+### 3. Conclusion
+**"성장한다는 건, 더 깊이 이해한다는 건, 과거에 알던 진실을 놓아주는 것이다."** 개발자로서도 기존의 지식이나 프레임워크에 갇히지 말아야겠다는 생각을 하게 됨.
+        `
+    },
+    {
+        id: 22,
+        category: 'book',
+        title: '25년 9월의 책 : AI 강의 2025',
+        date: 'Sep 30, 2025',
+        tech: 'Book Review, AI Trend, Technology',
+        summary: '급변하는 AI 트렌드와 기술적 도약을 정리하고, 다가올 미래의 비즈니스와 삶의 변화를 예측한 트렌드서.',
+        content: `
+![AI 강의 2025](assets/AI 강의 2025.jpeg)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>AI 강의 2025</em></p>
+
+### 1. Overview
+하루가 다르게 변하는 AI 기술의 최전선을 정리한 책. LLM(거대언어모델)을 넘어, 스스로 계획하고 실행하는 **AI 에이전트(Agent)** 시대로의 전환을 예고함.
+
+### 2. Insight
+단순히 "AI가 일자리를 뺏을까?"라는 두려움을 넘어, AI를 도구로 활용하는 능력(AI Literacy)이 필수 생존 기술이 될 것임. 특히 2025년은 AI가 실험실을 벗어나 실제 산업 현장에 깊숙이 침투하는 원년이 될 것이라는 전망에 공감함.
+
+### 3. Conclusion
+트렌드를 따라가는 것에 급급하기보다, 변하지 않는 본질(문제 해결 능력)에 집중하되 AI라는 강력한 레버리지를 어떻게 활용할지 고민하는 계기가 됨.
+        `
+    },
+    {
+        id: 23,
+        category: 'book',
+        title: '25년 10월의 책 : 북유럽 신화 (케빈 크로슬리 홀런드)',
+        date: 'Oct 31, 2025',
+        tech: 'Book Review, Mythology, Fantasy',
+        summary: '오딘, 토르, 로키 등 거칠고 매혹적인 북유럽 신들의 이야기를 원전에 충실하면서도 현대적인 언어로 되살려낸 신화집.',
+        content: `
+![북유럽 신화](assets/북유럽신화.jpeg)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>북유럽 신화 - 케빈 크로슬리 홀런드</em></p>
+
+### 1. Overview
+마블 영화의 토르와 로키로 익숙한 북유럽 신화의 원형을 담은 책. 척박한 북유럽의 자연환경에서 탄생한 신화답게, 비장하고 거친 매력이 살아있음.
+
+### 2. Insight
+그리스 로마 신화의 신들이 불멸의 존재라면, 북유럽의 신들은 언젠가 멸망(라그나로크)할 운명을 알고서도 끝까지 싸우는 존재들임. 그 비극적 허무주의와 그럼에도 불구하고 맞서 싸우는 용기가 인상적임.
+
+### 3. Conclusion
+판타지 문학(반지의 제왕 등)의 뿌리가 된 상상력의 원천을 맛볼 수 있었음. 가끔은 코드와 논리에서 벗어나 이런 신화적 상상력에 빠져보는 것도 뇌를 리프레시하는 좋은 방법임.
+        `
+    },
+    {
+        id: 24,
+        category: 'book',
+        title: '25년 11월의 책 : 사피엔스 (Sapiens)',
+        date: 'Nov 30, 2025',
+        tech: 'Book Review, History, Anthropology',
+        summary: '변방의 유인원 호모 사피엔스가 어떻게 지구의 지배자가 되었는지, 인지 혁명부터 과학 혁명까지 인류의 빅 히스토리를 조망함.',
+        content: `
+![사피엔스](assets/사피엔스.jpeg)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>사피엔스 (Sapiens) - 유발 하라리</em></p>
+
+### 1. Overview
+유발 하라리의 대표작. 인류 역사를 '인지 혁명', '농업 혁명', '과학 혁명'의 3단계로 나누어 설명하며, 사피엔스가 어떻게 지구 생태계의 정점에 섰는지 분석함.
+
+### 2. Insight
+인간의 가장 큰 무기는 **"보이지 않는 것을 믿는 능력(허구, 상상력)"**이라는 통찰이 압도적임. 국가, 돈, 기업, 인권 같은 개념들은 물리적 실체가 아니라 우리가 공유하는 상상의 질서일 뿐이라는 점을 깨닫게 해줌.
+
+### 3. Conclusion
+기술이 발전할수록 인류는 신(Deus)에 가까워지고 있지만, 우리는 과연 더 행복해졌는가? 개발자로서 기술을 통해 무엇을 만들고 싶은지, 그 궁극적인 목적에 대해 철학적인 물음을 던져준 책.
+        `
     }
 ];
