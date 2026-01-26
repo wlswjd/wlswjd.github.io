@@ -415,4 +415,69 @@ predictor = TabularPredictor(label='거래금액(만원)', eval_metric='rmse').f
 앞으로도 계속해서 새로운 기능을 실험하는 **나만의 샌드박스**로 활용할 예정임.
         `
     }
+    {
+        id: 17,
+        category: 'competition',
+        title: '문서 타입 분류 AI 모델 개발 경진대회',
+        date: 'Jul 14, 2025',
+        tech: 'Python, PyTorch, EfficientNet, Albumentations',
+        summary: '다양한 문서 이미지를 17개 클래스로 분류하는 AI 모델 개발 경진대회 회고. CV 기반 이미지 분류 모델 활용 및 Two-Stage 전략 적용.',
+        content: `
+### 1. Overview (프로젝트 개요)
+
+문서는 금융, 의료, 보험, 물류 등 다양한 도메인에서 생성되며, 그 형식이 매우 다양하고 구조적이지 않음. 이번 프로젝트의 목표는 주어진 문서 이미지를 **17개의 클래스** 중 하나로 정확하게 분류하는 모델을 개발하는 것임.
+
+우리는 CV 기반의 이미지 분류 모델을 활용했으며, 단일 모델뿐만 아니라 **Two-Stage 모델 구조**를 실험하며 성능 개선을 시도함.
+
+### 2. Environment & Data (개발 환경 및 데이터)
+
+*   **Hardware:** NVIDIA RTX 3090, CUDA 12.2
+*   **Library:** PyTorch, Torchvision, Timm, Albumentations, Scikit-learn
+*   **Data:**
+    *   학습 데이터: 1,570장
+    *   테스트 데이터: 3,140장
+*   **EDA Insight:**
+    *   **클래스 간 혼동:** 입·퇴원 확인서(3), 외래진료 증명서(7), 이력서(13) 등은 양식이 다양하여 모델이 혼동을 일으킴.
+    *   **시각적 이질성:** 자동차 계기판, 자동차 등록판 등 일부 클래스는 다른 문서들과 시각적으로 매우 다름.
+
+### 3. Preprocessing & Augmentation (전처리 및 증강)
+
+#### [A] 전처리 (Preprocessing)
+*   Label 오류 수정 및 이미지 크기/포맷 통일.
+*   클래스 불균형 해소를 위해 일부 클래스에 대해 **Oversampling** 적용.
+
+#### [B] 데이터 증강 (Data Augmentation)
+Albumentations 라이브러리를 활용하여 16종 이상의 Offline Augmentation을 수행함. (RandomRotate90, Flip, GridDistortion, Perspective 등)
+
+\`\`\`python
+train_transform = A.Compose([
+    A.RandomRotate90(),
+    A.Resize(height=img_size, width=img_size),
+    A.Flip(),
+    A.GaussNoise(p=0.3),
+    # ...
+    A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ToTensorV2(),
+])
+\`\`\`
+
+### 4. Modeling Strategy (모델링 전략)
+
+#### [A] 단일 모델 실험
+*   **Backbone:** EfficientNet, ConvNeXt, HRNet, CoAtNet, EfficientNet V2 등 다양한 모델 실험.
+*   **Loss Function:** 클래스 불균형 해결을 위해 **Focal Loss** 적용. 혼동되는 클래스(3, 7번)에는 가중치를 1.3배 부여하여 학습 강화.
+*   **Scheduler:** LambdaLR, CosineAnnealingWarmRestarts 등 적용.
+
+#### [B] Two-Stage 모델 전략
+*   **Stage 1:** 문서 vs 비문서(자동차 계기판/번호판) 분리.
+*   **Stage 2:** 문서 이미지들만 대상으로 15개 클래스 세분화 분류.
+*   **효과:** 시각적 차이가 큰 클래스를 먼저 걸러내어 전체 정확도 상승을 유도함.
+
+### 5. Conclusion & Insight (회고)
+
+단순한 이미지 분류가 아니라, 비정형 문서의 시각적 다양성을 이해하는 것이 중요했음. 단일 모델의 한계를 **Two-Stage 설계**와 **Loss 가중치 조정**으로 극복할 수 있다는 점을 경험함.
+
+팀원들과의 적극적인 실험 공유를 통해 최적의 모델 조합을 찾았고, 결과적으로 **7위**라는 유의미한 성과를 달성함.
+        `
+    }
 ];
