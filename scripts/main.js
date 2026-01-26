@@ -8,7 +8,8 @@ const postCountDisplay = document.getElementById('post-count-display');
 
 const categoryGroups = {
     study: ['ml', 'dl', 'code', 'papers'],
-    project: ['competition', 'contest', 'sidepr', 'projects']
+    project: ['competition', 'contest', 'sidepr', 'projects'],
+    life: ['book']
 };
 
 // Initial Render
