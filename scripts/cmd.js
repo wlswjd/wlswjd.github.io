@@ -31,7 +31,27 @@ cmdInput.addEventListener('keydown', (e) => {
         return;
     }
 
-    // 2. Normal Terminal Input Handling
+    // 2. Blackjack Game Input Handling
+    if (typeof BlackjackGame !== 'undefined' && BlackjackGame.isActive) {
+        e.preventDefault(); // Prevent typing in input box
+        BlackjackGame.handleInput(e.key);
+        return;
+    }
+
+    // 3. Rain Game Input Handling
+    if (typeof RainGame !== 'undefined' && RainGame.isActive) {
+        // Allow default behavior for typing, but capture it for the game
+        // Note: RainGame might handle 'Enter' or 'Backspace' differently
+        // We let the input box fill up, then RainGame reads it? 
+        // Actually RainGame logic clears input manually. 
+        // Let's prevent default to keep focus but not fill native input if we render our own.
+        // But RainGame.handleInput expects keys.
+        e.preventDefault();
+        RainGame.handleInput(e.key);
+        return;
+    }
+
+    // 4. Normal Terminal Input Handling
     if (e.key === 'Enter') {
         const command = cmdInput.value.trim();
         if (command) {
@@ -110,6 +130,8 @@ function processCommand(cmd) {
             printOutput('  contact  - Show contact info');
             printOutput('  game     - Start a mini game (game [dino|tetris])');
             printOutput('  rogue    - Play Mini-Rogue (rogue play)');
+            printOutput('  blackjack- Play Blackjack (Casino card game)');
+            printOutput('  rain     - Play Typing Defense (rain)');
             printOutput('  ls       - List directory contents');
             break;
         case 'cls':
@@ -176,6 +198,22 @@ function processCommand(cmd) {
             } else {
                 printOutput("Usage: rogue play");
             }
+            break;
+        case 'blackjack':
+        case 'bj':
+            cmdOutput.innerHTML = '';
+            printOutput("Shuffling deck...", false);
+            setTimeout(() => {
+                BlackjackGame.init((text, isHtml, clear) => printOutput(text, isHtml, clear));
+            }, 500);
+            break;
+        case 'rain':
+        case 'drop':
+            cmdOutput.innerHTML = '';
+            printOutput("Initializing Typing Defense...", false);
+            setTimeout(() => {
+                RainGame.init((text, isHtml, clear) => printOutput(text, isHtml, clear));
+            }, 500);
             break;
         default:
             printOutput(`'${command}' is not recognized as an internal or external command.`);
