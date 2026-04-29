@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wlswjd-github-io.vercel.app)",
+      "Bash(gh api *)",
+      "Bash(cat)",
+      "Bash(node /tmp/parse_posts.js)",
+      "Bash(echo \"Exit: $?, lines: $\\(wc -l < /tmp/posts.json\\)\")",
+      "Bash(node *)",
+      "Bash(python3 *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
