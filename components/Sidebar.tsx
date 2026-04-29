@@ -149,7 +149,7 @@ export default function Sidebar({ tags }: Props) {
               className="contact-icon-link has-tooltip"
               data-tooltip="Gmail"
             >
-              <i className="nes-icon gmail is-medium"></i>
+              <i className="nes-icon google is-medium"></i>
             </a>
           </div>
         </div>

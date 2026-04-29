@@ -77,6 +77,13 @@ a:hover { text-decoration: underline; }
 }
 .site-title:hover { text-decoration: none; }
 
+.site-logo {
+  margin-right: 10px;
+  vertical-align: middle;
+  transform: scale(1.2);
+  display: inline-block;
+}
+
 .title-bracket { color: var(--text-muted); font-size: 16px; }
 .title-main { color: var(--text); }
 .title-accent { color: var(--accent); }

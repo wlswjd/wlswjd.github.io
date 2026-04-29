@@ -5,6 +5,7 @@ export default function Header() {
     <header className="site-header">
       <div className="header-inner">
         <Link href="/" className="site-title">
+          <i className="snes-jp-logo site-logo"></i>
           <span className="title-bracket">&gt; </span>
           <span className="title-main">DEV</span>
           <span className="title-accent">LOG</span>
@@ -18,7 +19,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="nes-btn nav-btn"
           >
-            STUDY ↗
+            Minecraft RAG ↗
           </a>
           <a
             href="https://ytchannel-analyze-rag.streamlit.app/"
@@ -26,7 +27,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="nes-btn nav-btn"
           >
-            PROJECT ↗
+            Youtube RAG ↗
           </a>
           <span className="nes-btn is-disabled nav-btn">PORTFOLIO</span>
           <Link href="/search" className="nes-btn is-warning nav-btn">SEARCH</Link>
