@@ -11,15 +11,25 @@ export default function Header() {
           <span className="title-cursor">_</span>
         </Link>
         <nav className="site-nav">
-          <Link href="/" className="nes-btn is-primary nav-btn">
-            HOME
-          </Link>
-          <Link href="/category/study" className="nes-btn nav-btn">
-            STUDY
-          </Link>
-          <Link href="/category/project" className="nes-btn nav-btn">
-            PROJECT
-          </Link>
+          <Link href="/" className="nes-btn is-primary nav-btn">HOME</Link>
+          <a
+            href="https://minecraft-ragai.streamlit.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nes-btn nav-btn"
+          >
+            STUDY ↗
+          </a>
+          <a
+            href="https://ytchannel-analyze-rag.streamlit.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nes-btn nav-btn"
+          >
+            PROJECT ↗
+          </a>
+          <span className="nes-btn is-disabled nav-btn">PORTFOLIO</span>
+          <Link href="/search" className="nes-btn is-warning nav-btn">SEARCH</Link>
         </nav>
       </div>
       <hr className="header-divider" />

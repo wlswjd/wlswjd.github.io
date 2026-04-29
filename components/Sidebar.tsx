@@ -5,6 +5,15 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CATEGORY_TREE, type Category } from '@/lib/categories'
 
+interface TagInfo {
+  tag: string
+  count: number
+}
+
+interface Props {
+  tags: TagInfo[]
+}
+
 function LeafNode({ category }: { category: Category }) {
   const pathname = usePathname()
   const href = `/category/${category.path.join('/')}`
@@ -52,8 +61,9 @@ function RootNode({ category }: { category: Category }) {
   )
 }
 
-export default function Sidebar() {
+export default function Sidebar({ tags }: Props) {
   const [rootOpen, setRootOpen] = useState(true)
+  const [tagsOpen, setTagsOpen] = useState(true)
 
   return (
     <aside className="sidebar">
@@ -62,6 +72,8 @@ export default function Sidebar() {
           <span className="nes-icon is-small star"></span>
           <span>MENU</span>
         </div>
+
+        {/* Category Tree */}
         <div className="tree-wrapper">
           <div
             className="tree-categories-header"
@@ -77,6 +89,69 @@ export default function Sidebar() {
               ))}
             </div>
           )}
+        </div>
+
+        {/* Tag Cloud */}
+        {tags.length > 0 && (
+          <div className="sidebar-section">
+            <div
+              className="tree-categories-header"
+              onClick={() => setTagsOpen(o => !o)}
+            >
+              <span className="toggle-box">{tagsOpen ? '-' : '+'}</span>
+              <span className="categories-label">Tags</span>
+            </div>
+            {tagsOpen && (
+              <div className="tag-cloud">
+                {tags.slice(0, 11).map(({ tag, count }) => (
+                  <Link
+                    key={tag}
+                    href={`/tag/${encodeURIComponent(tag)}`}
+                    className="tag-cloud-item has-tooltip"
+                    data-tooltip={`${count}개의 포스트`}
+                  >
+                    #{tag}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* GitHub 잔디 */}
+        <div className="sidebar-section">
+          <div className="sidebar-section-title">GitHub</div>
+          <div className="github-chart-wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://github-readme-activity-graph.vercel.app/graph?username=wlswjd&theme=minimal&hide_border=true&area=true&height=150"
+              alt="GitHub contributions"
+              className="github-chart"
+            />
+          </div>
+        </div>
+
+        {/* Contact */}
+        <div className="sidebar-section">
+          <div className="sidebar-section-title">Contact</div>
+          <div className="contact-icons">
+            <a
+              href="https://github.com/wlswjd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-icon-link has-tooltip"
+              data-tooltip="GitHub"
+            >
+              <i className="nes-icon github is-medium"></i>
+            </a>
+            <a
+              href="mailto:wlswjd010629@gmail.com"
+              className="contact-icon-link has-tooltip"
+              data-tooltip="Gmail"
+            >
+              <i className="nes-icon gmail is-medium"></i>
+            </a>
+          </div>
         </div>
       </div>
     </aside>

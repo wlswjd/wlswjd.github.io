@@ -3,6 +3,8 @@ import './globals.css'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
 import Footer from '@/components/Footer'
+import NavigationProgress from '@/components/NavigationProgress'
+import { getAllTags } from '@/lib/posts'
 
 export const metadata: Metadata = {
   title: { default: 'DEVLOG_', template: '%s | DEVLOG_' },
@@ -10,12 +12,15 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const tags = getAllTags()
+
   return (
     <html lang="ko">
       <body>
+        <NavigationProgress />
         <div className="layout-wrapper">
           <Header />
-          <Sidebar />
+          <Sidebar tags={tags} />
           <main className="main-content">{children}</main>
           <Footer />
         </div>
