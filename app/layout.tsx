@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
 import Footer from '@/components/Footer'
 import NavigationProgress from '@/components/NavigationProgress'
+import ScrollToTop from '@/components/ScrollToTop'
 import { getAllTags } from '@/lib/posts'
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="main-content">{children}</main>
           <Footer />
         </div>
+        <ScrollToTop />
       </body>
     </html>
   )

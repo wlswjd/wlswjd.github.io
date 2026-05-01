@@ -118,19 +118,6 @@ export default function Sidebar({ tags }: Props) {
           </div>
         )}
 
-        {/* GitHub 잔디 */}
-        <div className="sidebar-section">
-          <div className="sidebar-section-title">GitHub</div>
-          <div className="github-chart-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://github-readme-activity-graph.vercel.app/graph?username=wlswjd&theme=minimal&hide_border=true&area=true&height=150"
-              alt="GitHub contributions"
-              className="github-chart"
-            />
-          </div>
-        </div>
-
         {/* Contact */}
         <div className="sidebar-section">
           <div className="sidebar-section-title">Contact</div>
