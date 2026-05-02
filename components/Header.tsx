@@ -29,7 +29,7 @@ export default function Header() {
           >
             Youtube RAG ↗
           </a>
-          <span className="nes-btn is-disabled nav-btn">PORTFOLIO</span>
+          <Link href="/portfolio" className="nes-btn is-error nav-btn">PORTFOLIO</Link>
           <Link href="/search" className="nes-btn is-warning nav-btn">SEARCH</Link>
         </nav>
       </div>
