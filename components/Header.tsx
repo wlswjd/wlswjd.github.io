@@ -19,7 +19,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="nes-btn nav-btn"
           >
-            Minecraft RAG ↗
+            Game RAG ↗
           </a>
           <a
             href="https://ytchannel-analyze-rag.streamlit.app/"
