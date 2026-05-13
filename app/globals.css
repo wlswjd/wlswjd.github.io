@@ -364,6 +364,8 @@ a:hover { text-decoration: underline; }
 
 .post-content img { max-width: 100%; height: auto; border: 3px solid var(--border); }
 .post-content a { color: var(--accent); border-bottom: 1px solid var(--accent); }
+.post-content pre a,
+.post-content code a { border-bottom: none; text-decoration: none; color: inherit; }
 
 .post-nav {
   display: flex;
