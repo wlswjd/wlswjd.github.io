@@ -1,6 +1,6 @@
 ---
 title: "[논문 리뷰] Cowboys, Ankle Sprains, and Keepers of Quality: How Is Video Game Development Different from Software Development? (ICSE 2014)"
-date: "2026-05-20"
+date: "2026-05-02"
 description: "게임 개발은 정말 일반 SW 개발과 다른가? 14명 인터뷰 + Microsoft 내부 364명 설문으로 SWEBOK 전 영역을 비교한 실증 연구. ‘Fun’이라는 단 하나의 요구사항, Cowboy Coder, 그리고 Wii 테스터들의 발목 염좌까지."
 tags: ["Software Engineering", "Game Development", "Empirical Study", "ICSE"]
 ---
