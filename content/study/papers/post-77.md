@@ -1,6 +1,6 @@
 ---
 title: "[논문 리뷰] A Monte Carlo Approach to Skill-Based Automated Playtesting (AIIDE 2018)"
-date: "2026-05-20"
+date: "2026-05-16"
 description: "게임 튜토리얼이 의도한 스킬을 정말 요구하는지를 자동으로 검증할 수 있을까? Foldit에 Stratabots(스킬 기반 봇)을 적용하고, 손으로 짠 봇과 Monte Carlo Evaluation 봇을 비교한 연구."
 tags: ["Game AI", "Automated Playtesting", "Monte Carlo", "Player Modeling", "AIIDE"]
 ---
