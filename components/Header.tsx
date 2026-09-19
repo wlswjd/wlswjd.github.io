@@ -1,4 +1,16 @@
+'use client'
+
 import Link from 'next/link'
+
+function handlePortfolioClick(e: React.MouseEvent) {
+  e.preventDefault()
+  if (window.confirm('포트폴리오를 다운로드 하시겠습니까?')) {
+    const a = document.createElement('a')
+    a.href = '/portfolio.pdf'
+    a.download = '진정맨_포트폴리오.pdf'
+    a.click()
+  }
+}
 
 export default function Header() {
   return (
@@ -29,7 +41,7 @@ export default function Header() {
           >
             Youtube RAG ↗
           </a>
-          <Link href="/portfolio" className="nes-btn is-error nav-btn">PORTFOLIO</Link>
+          <a href="/portfolio.pdf" onClick={handlePortfolioClick} className="nes-btn is-error nav-btn">PORTFOLIO</a>
           <Link href="/search" className="nes-btn is-warning nav-btn">SEARCH</Link>
         </nav>
       </div>
