@@ -54,9 +54,9 @@ export default async function CategoryPage({ params }: Props) {
         <span className="section-subtitle">({posts.length})</span>
       </h2>
 
-      {category?.children && category.children.length > 0 && (
+      {category?.children && category.children.some(child => !child.hidden) && (
         <div className="sub-categories">
-          {category.children.map(child => (
+          {category.children.filter(child => !child.hidden).map(child => (
             <Link
               key={child.id}
               href={`/category/${child.path.join('/')}`}

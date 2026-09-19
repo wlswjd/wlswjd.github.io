@@ -52,7 +52,7 @@ function RootNode({ category }: { category: Category }) {
       </div>
       {isOpen && category.children && (
         <div className="tree-children">
-          {category.children.map(child => (
+          {category.children.filter(child => !child.hidden).map(child => (
             <LeafNode key={child.id} category={child} />
           ))}
         </div>
