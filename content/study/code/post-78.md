@@ -292,10 +292,4 @@ print('NONE' if not result else ' '.join(map(str, result)))
 | `set`, `dict` | **O(1) 평균** | hash 계산 → 슬롯 찾기 → 확인 |
 | `str` | O(N) | substring 검색 |
 
-같은 데이터라도 `set`으로 바꾸면 멤버십 검사가 N배 빨라지는 이유가 바로 이 해시 테이블 구조 덕분이다.
-
----
-
-### 다음 글 예고
-
-- Day 2 — 문자열 처리
+같은 데이터라도 `set`으로 바꾸면 멤버십 검사가 N배 빨라지는 이유가 바로 이 해시 테이블 구조 덕분
