@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { CATEGORY_TREE, type Category } from '@/lib/categories'
+import ThemeToggle from './ThemeToggle'
 
 interface TagInfo {
   tag: string
@@ -139,6 +140,11 @@ export default function Sidebar({ tags }: Props) {
               <i className="nes-icon google is-medium"></i>
             </a>
           </div>
+        </div>
+
+        {/* Theme Switch */}
+        <div className="sidebar-section">
+          <ThemeToggle />
         </div>
       </div>
     </aside>
