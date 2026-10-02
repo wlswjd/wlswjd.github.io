@@ -12,6 +12,7 @@ export const CATEGORY_TREE: Category[] = [
     label: 'STUDY',
     path: ['study'],
     children: [
+      { id: 'math', label: '수학 (Math)', path: ['study', 'math'] },
       { id: 'ml', label: '머신러닝 (ML)', path: ['study', 'ml'] },
       { id: 'dl', label: '딥러닝 (DL)', path: ['study', 'dl'] },
       { id: 'llm-agent', label: 'LLM Agent', path: ['study', 'llm-agent'] },
