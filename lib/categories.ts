@@ -58,3 +58,14 @@ export function getCategoryLabel(pathArr: string[]): string {
   if (cat) return cat.label
   return pathArr[pathArr.length - 1] ?? ''
 }
+
+export function isCategoryHidden(pathArr: string[]): boolean {
+  let nodes = CATEGORY_TREE
+  for (const segment of pathArr) {
+    const node = nodes.find(n => n.id === segment)
+    if (!node) return false
+    if (node.hidden) return true
+    nodes = node.children ?? []
+  }
+  return false
+}

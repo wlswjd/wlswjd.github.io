@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import remarkHtml from 'remark-html'
+import { isCategoryHidden } from './categories'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
 
@@ -51,6 +52,7 @@ function parsePostMeta(filePath: string): PostMeta {
 export function getAllPostMetas(): PostMeta[] {
   return walkDir(CONTENT_DIR)
     .map(parsePostMeta)
+    .filter(p => !isCategoryHidden(p.categoryPath))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
