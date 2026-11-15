@@ -80,11 +80,6 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                     </Link>
                   ))}
                 </nav>
-                <p className="diary-intro">
-                  머신러닝 · LLM Agent · 게임 AI
-                  <br />
-                  오늘도 한 칸씩 ▶
-                </p>
                 <div className="diary-spacer" />
                 <div className="diary-contact">
                   <div className="diary-contact-icons">
