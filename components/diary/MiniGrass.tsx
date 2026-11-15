@@ -9,7 +9,7 @@ interface Day {
 
 async function getDays(): Promise<Day[]> {
   try {
-    const res = await fetch(`https://github.com/users/${USER}/contributions`, { cache: 'force-cache' })
+    const res = await fetch(`https://github.com/users/${USER}/contributions`, { next: { revalidate: 3600 } })
     if (!res.ok) return []
     const html = await res.text()
     const days: Day[] = []
