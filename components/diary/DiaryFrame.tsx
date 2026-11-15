@@ -3,6 +3,7 @@ import { getAllPostMetas } from '@/lib/posts'
 import ThemeToggle from '@/components/ThemeToggle'
 import PixelAvatar from './PixelAvatar'
 import DiaryTabs from './DiaryTabs'
+import DiaryMain from './DiaryMain'
 
 function Rings() {
   return (
@@ -72,7 +73,7 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
               <Rings />
 
               {/* Right page: content */}
-              <main className="diary-page diary-main">{children}</main>
+              <DiaryMain>{children}</DiaryMain>
             </div>
           </div>
         </div>

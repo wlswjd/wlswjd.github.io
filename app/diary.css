@@ -41,18 +41,33 @@ body {
 }
 
 /* ─── Frame ─────────────────────────────────────────────── */
-.diary-desk { padding: 48px 16px; }
+/* 바인더 크기: 화면 높이에 맞추고(최대 960px), 가로는 높이의 1.6배(16:10).
+   화면이 좁으면 가로 폭이 먼저 줄어든다. 페이지 자체는 스크롤되지 않고
+   오른쪽 페이지만 내부 스크롤. */
+:root {
+  --book-h: min(calc(100vh - 64px), 960px);
+  --book-w: min(calc(var(--book-h) * 1.6), calc(100vw - 160px));
+}
+
+.diary-desk {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 32px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .diary-shell {
-  max-width: 1120px;
-  margin: 0 auto;
   display: flex;
   align-items: flex-start;
 }
 
 .diary-binder {
-  flex: 1;
-  min-width: 0;
+  width: var(--book-w);
+  height: var(--book-h);
+  min-height: 600px;
+  box-sizing: border-box;
   background: var(--surface);
   border-radius: 16px;
   padding: 14px;
@@ -63,6 +78,10 @@ body {
   border: 2px dashed var(--binder-dash);
   border-radius: 12px;
   padding: 18px 20px 20px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ─── Top strip ─────────────────────────────────────────── */
@@ -102,7 +121,7 @@ body {
 .diary-url { font-size: 12px; color: var(--text-muted); }
 
 /* ─── Pages ─────────────────────────────────────────────── */
-.diary-pages { display: flex; align-items: stretch; }
+.diary-pages { flex: 1; min-height: 0; display: flex; align-items: stretch; }
 
 .diary-page {
   background: var(--surface);
@@ -117,16 +136,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  position: sticky;
-  top: 16px;
-  align-self: flex-start;
-  min-height: 560px;
+  overflow-y: auto;
 }
 
 .diary-main {
   flex: 1;
   min-width: 0;
   padding: 20px 24px;
+  overflow-y: auto;
 }
 
 .diary-rings {
@@ -135,7 +152,6 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 72px 0;
-  max-height: 560px;
 }
 .diary-rings > div { display: flex; flex-direction: column; gap: 10px; }
 .diary-rings span {
@@ -194,8 +210,6 @@ body {
   gap: 4px;
   padding-top: 72px;
   margin-left: -6px;
-  position: sticky;
-  top: 16px;
 }
 
 .diary-tab {
@@ -309,7 +323,10 @@ body {
 
 /* ─── Responsive ────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .diary-desk { padding: 16px 8px; }
+  .diary-desk { padding: 16px 8px; display: block; min-height: 0; }
+  .diary-binder { height: auto; min-height: 0; }
+  .diary-binder-inner { height: auto; }
+  .diary-main, .diary-profile { overflow: visible; }
   .diary-shell { flex-direction: column-reverse; }
   .diary-tabs {
     position: static;
