@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getAllPostMetas } from '@/lib/posts'
+import { CATEGORY_TREE } from '@/lib/categories'
 import ThemeToggle from '@/components/ThemeToggle'
 import PixelAvatar from './PixelAvatar'
 import DiaryTabs from './DiaryTabs'
@@ -18,6 +19,13 @@ function Rings() {
 export default function DiaryFrame({ children }: { children: React.ReactNode }) {
   const posts = getAllPostMetas()
   const lastUpdated = posts[0]?.date.slice(5).replace('-', '.') ?? '--.--'
+  const counts = CATEGORY_TREE.flatMap(root => root.children ?? [])
+    .filter(child => !child.hidden)
+    .map(child => ({
+      label: child.label.replace(/\s*\(.*\)$/, ''),
+      href: `/category/${child.path.join('/')}`,
+      count: posts.filter(p => p.categoryPath.join('/') === child.path.join('/')).length,
+    }))
 
   return (
     <div className="diary-desk">
@@ -55,6 +63,14 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                   <PixelAvatar size={128} />
                 </div>
                 <MiniGrass />
+                <nav className="diary-counts" aria-label="카테고리별 글 수">
+                  {counts.map(c => (
+                    <Link key={c.href} href={c.href} className="diary-count">
+                      <span>{c.label}</span>
+                      <b>{c.count}</b>
+                    </Link>
+                  ))}
+                </nav>
                 <p className="diary-intro">
                   머신러닝 · LLM Agent · 게임 AI
                   <br />

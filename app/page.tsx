@@ -1,24 +1,16 @@
 import Link from 'next/link'
 import { getAllPostMetas, getAllTags } from '@/lib/posts'
-import { CATEGORY_TREE } from '@/lib/categories'
 import MiniRoom from '@/components/diary/MiniRoom'
+import NowPlaying from '@/components/diary/NowPlaying'
 
 export default function HomePage() {
   const posts = getAllPostMetas()
   const recent = posts.slice(0, 8)
   const tags = getAllTags().slice(0, 12)
 
-  const counts = CATEGORY_TREE.flatMap(root => root.children ?? [])
-    .filter(child => !child.hidden)
-    .map(child => ({
-      label: child.label.replace(/\s*\(.*\)$/, ''),
-      href: `/category/${child.path.join('/')}`,
-      count: posts.filter(p => p.categoryPath.join('/') === child.path.join('/')).length,
-    }))
-
   return (
     <div className="diary-home">
-      {/* Updated posts + counts */}
+      {/* Updated posts + now playing */}
       <section className="diary-updated">
         <div className="diary-news">
           <h2 className="diary-section-title">Updated posts</h2>
@@ -36,14 +28,7 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <div className="diary-counts">
-          {counts.map(c => (
-            <Link key={c.href} href={c.href} className="diary-count">
-              <span>{c.label}</span>
-              <b>{c.count}</b>
-            </Link>
-          ))}
-        </div>
+        <NowPlaying />
       </section>
 
       {/* Mini room */}

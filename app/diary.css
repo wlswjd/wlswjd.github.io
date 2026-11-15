@@ -272,24 +272,74 @@ body {
 .diary-badge.is-project { background: #c4452d; }
 .diary-badge.is-daily { background: #3f7a12; }
 
+/* 왼쪽 프로필의 카테고리 수 (작고 촘촘하게) */
 .diary-counts {
-  flex: 1 1 220px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 18px;
-  align-content: start;
-  font-size: 14px;
+  gap: 0 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--paper-edge);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .diary-count {
   display: flex;
   justify-content: space-between;
-  padding: 6px 0;
+  gap: 4px;
+  padding: 3px 0;
   border-bottom: 1px dotted var(--binder-dash);
   color: var(--text);
+  min-width: 0;
 }
+.diary-count span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .diary-count b { color: var(--accent-text); }
 .diary-count:hover { text-decoration: none; color: var(--accent-text); }
+
+/* 지금 듣는 노래 */
+.now-playing {
+  flex: 1 1 200px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--paper-edge);
+  background: var(--bg);
+  align-self: flex-start;
+}
+.now-playing-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--accent-text);
+}
+.now-playing-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 10px; }
+.now-playing-eq i { width: 3px; background: var(--accent); animation: np-eq 0.9s steps(3) infinite; }
+.now-playing-eq i:nth-child(2) { animation-delay: -0.3s; }
+.now-playing-eq i:nth-child(3) { animation-delay: -0.6s; }
+@keyframes np-eq { 0% { height: 3px; } 50% { height: 10px; } 100% { height: 5px; } }
+
+.now-playing-cover { aspect-ratio: 1; border: 2px solid var(--border); }
+.now-playing-cover svg,
+.now-playing-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.now-playing-title { font-size: 13px; font-weight: 700; line-height: 1.4; }
+.now-playing-artist { font-size: 12px; color: var(--text-muted); }
+.now-playing-artist span { font-size: 11px; }
+
+.now-playing-bar { height: 4px; background: var(--paper-edge); }
+.now-playing-bar span { display: block; height: 100%; background: var(--accent); }
+
+.now-playing-time {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 6px;
+  color: var(--text-muted);
+}
 
 .diary-room-tabs {
   font-size: 13px;
