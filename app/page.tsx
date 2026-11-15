@@ -5,7 +5,7 @@ import NowPlaying from '@/components/diary/NowPlaying'
 
 export default function HomePage() {
   const posts = getAllPostMetas()
-  const recent = posts.slice(0, 8)
+  const recent = posts.slice(0, 6)
   const tags = getAllTags().slice(0, 12)
 
   return (
