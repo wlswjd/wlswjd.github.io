@@ -3,11 +3,10 @@
 const NOW_PLAYING = {
   title: "(What's the Story) Morning Glory?",
   artist: 'Oasis',
-  meta: '1995 · Britpop',
+  meta: '1995 · Britpop · Rock',
+  runtime: '50분 06초',
+  tracks: 12,
   cover: '' as string, // 예: '/images/now-playing.jpg'
-  progress: 0.42,
-  elapsed: '1:52',
-  duration: '4:28',
 }
 
 // 커버 이미지가 없을 때 보여줄 기본 아트 (해 질 녘 도시 픽셀 그림)
@@ -49,29 +48,21 @@ export default function NowPlaying() {
         <span className="now-playing-eq" aria-hidden="true"><i /><i /><i /></span>
         NOW PLAYING
       </div>
-      <div className="now-playing-body">
-        <div className="now-playing-cover">
-          {s.cover ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={s.cover} alt={`${s.title} 앨범 커버`} />
-          ) : (
-            <DefaultCover />
-          )}
-        </div>
-        <div className="now-playing-info">
-          <div className="now-playing-title">{s.title}</div>
-          <div className="now-playing-artist">{s.artist}</div>
-          <div className="now-playing-meta">{s.meta}</div>
-          <div className="now-playing-spacer" />
-          <div className="now-playing-bar" aria-hidden="true">
-            <span style={{ width: `${s.progress * 100}%` }} />
-          </div>
-          <div className="now-playing-time" aria-hidden="true">
-            <span>{s.elapsed}</span>
-            <span>{s.duration}</span>
-          </div>
-          <div className="now-playing-controls" aria-hidden="true">◀◀ &nbsp;▮▮&nbsp; ▶▶</div>
-        </div>
+      <div className="now-playing-cover">
+        {s.cover ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={s.cover} alt={`${s.title} 앨범 커버`} />
+        ) : (
+          <DefaultCover />
+        )}
+      </div>
+      <div className="now-playing-title">{s.title}</div>
+      <div className="now-playing-artist">{s.artist}</div>
+      <div className="now-playing-meta">
+        <span>{s.meta}</span>
+        <span>
+          {s.runtime} · {s.tracks} tracks
+        </span>
       </div>
     </div>
   )

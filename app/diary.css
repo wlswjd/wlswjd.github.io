@@ -285,7 +285,7 @@ body {
   border-bottom: 1px solid var(--paper-edge);
 }
 
-.diary-updated { display: grid; grid-template-columns: minmax(0, 480px) minmax(320px, 1fr); gap: 16px 28px; align-items: start; }
+.diary-updated { display: grid; grid-template-columns: minmax(0, 600px) minmax(260px, 1fr); gap: 16px 28px; align-items: start; }
 .diary-news { min-width: 0; }
 
 .diary-news-list { list-style: none; margin: 0; padding: 0; }
@@ -343,21 +343,23 @@ body {
 .diary-count b { color: var(--accent-text); }
 .diary-count:hover { text-decoration: none; color: var(--accent-text); }
 
-/* 지금 듣는 노래 (가로형: 커버 | 정보) */
+/* 지금 듣는 노래 (세로형: 커버 위, 정보 아래) */
 .now-playing {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 12px;
+  gap: 4px;
+  padding: 12px 14px 12px;
   border: 1px solid var(--paper-edge);
   background: var(--bg);
-  align-self: flex-start;
+  align-self: start;
   box-sizing: border-box;
+  min-width: 0;
 }
 .now-playing-label {
   display: flex;
   align-items: center;
   gap: 6px;
+  margin-bottom: 4px;
   font-family: var(--font-pixel);
   font-size: 7px;
   color: var(--accent-text);
@@ -368,35 +370,36 @@ body {
 .now-playing-eq i:nth-child(3) { animation-delay: -0.6s; }
 @keyframes np-eq { 0% { height: 3px; } 50% { height: 10px; } 100% { height: 5px; } }
 
-.now-playing-body { display: flex; gap: 14px; }
-
 .now-playing-cover {
-  flex: 0 0 auto;
-  width: 188px;
+  align-self: center;
+  width: 170px;
   aspect-ratio: 1;
-  border: 2px solid var(--border);
-  box-sizing: border-box;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 .now-playing-cover svg,
 .now-playing-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.now-playing-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-.now-playing-title { font-size: 14px; font-weight: 700; line-height: 1.4; }
-.now-playing-artist { font-size: 13px; color: var(--text-muted); }
-.now-playing-meta { font-size: 11px; color: var(--text-muted); }
-.now-playing-spacer { flex: 1; }
-
-.now-playing-bar { height: 4px; background: var(--paper-edge); }
-.now-playing-bar span { display: block; height: 100%; background: var(--accent); }
-
-.now-playing-time {
+.now-playing-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.now-playing-artist { font-size: 13px; color: var(--accent-text); }
+.now-playing-meta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  font-family: var(--font-pixel);
-  font-size: 6px;
+  gap: 2px 10px;
+  font-size: 11px;
   color: var(--text-muted);
 }
-.now-playing-controls { text-align: center; font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
 
 .diary-room-tabs {
   font-size: 13px;
