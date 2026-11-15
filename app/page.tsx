@@ -32,7 +32,7 @@ export default function HomePage() {
       </section>
 
       {/* Mini room */}
-      <section>
+      <section className="diary-miniroom">
         <div className="diary-room-tabs">
           <b>Miniroom</b>
         </div>

@@ -60,7 +60,7 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                   <b>공부중</b>
                 </div>
                 <div className="diary-avatar">
-                  <PixelAvatar size={128} />
+                  <PixelAvatar size={96} />
                 </div>
                 <MiniGrass />
                 <nav className="diary-counts" aria-label="카테고리별 글 수">
@@ -78,14 +78,16 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                 </p>
                 <div className="diary-spacer" />
                 <div className="diary-contact">
-                  <a href="https://github.com/wlswjd" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <i className="nes-icon github is-small"></i>
-                  </a>
-                  <a href="mailto:wlswjd010629@gmail.com" aria-label="Gmail">
-                    <i className="nes-icon google is-small"></i>
-                  </a>
+                  <div className="diary-contact-icons">
+                    <a href="https://github.com/wlswjd" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <i className="nes-icon github is-small"></i>
+                    </a>
+                    <a href="mailto:wlswjd010629@gmail.com" aria-label="Gmail">
+                      <i className="nes-icon google is-small"></i>
+                    </a>
+                  </div>
+                  <ThemeToggle />
                 </div>
-                <ThemeToggle />
               </aside>
 
               <Rings />

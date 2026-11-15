@@ -49,25 +49,29 @@ export default function NowPlaying() {
         <span className="now-playing-eq" aria-hidden="true"><i /><i /><i /></span>
         NOW PLAYING
       </div>
-      <div className="now-playing-cover">
-        {s.cover ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={s.cover} alt={`${s.title} 앨범 커버`} />
-        ) : (
-          <DefaultCover />
-        )}
-      </div>
-      <div className="now-playing-title">{s.title}</div>
-      <div className="now-playing-artist">
-        {s.artist} <span>· {s.meta}</span>
-      </div>
-      <div className="now-playing-bar" aria-hidden="true">
-        <span style={{ width: `${s.progress * 100}%` }} />
-      </div>
-      <div className="now-playing-time" aria-hidden="true">
-        <span>{s.elapsed}</span>
-        <span>◀◀ &nbsp;▮▮&nbsp; ▶▶</span>
-        <span>{s.duration}</span>
+      <div className="now-playing-body">
+        <div className="now-playing-cover">
+          {s.cover ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={s.cover} alt={`${s.title} 앨범 커버`} />
+          ) : (
+            <DefaultCover />
+          )}
+        </div>
+        <div className="now-playing-info">
+          <div className="now-playing-title">{s.title}</div>
+          <div className="now-playing-artist">{s.artist}</div>
+          <div className="now-playing-meta">{s.meta}</div>
+          <div className="now-playing-spacer" />
+          <div className="now-playing-bar" aria-hidden="true">
+            <span style={{ width: `${s.progress * 100}%` }} />
+          </div>
+          <div className="now-playing-time" aria-hidden="true">
+            <span>{s.elapsed}</span>
+            <span>{s.duration}</span>
+          </div>
+          <div className="now-playing-controls" aria-hidden="true">◀◀ &nbsp;▮▮&nbsp; ▶▶</div>
+        </div>
       </div>
     </div>
   )
