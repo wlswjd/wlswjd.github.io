@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { getAllPostMetas } from '@/lib/posts'
 import { CATEGORY_TREE } from '@/lib/categories'
 import ThemeToggle from '@/components/ThemeToggle'
-import PixelAvatar from './PixelAvatar'
 import DiaryTabs from './DiaryTabs'
 import DiaryMain from './DiaryMain'
 import MiniGrass from './MiniGrass'
@@ -60,7 +59,17 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                   <b>공부중</b>
                 </div>
                 <div className="diary-avatar">
-                  <PixelAvatar size={96} />
+                  <div className="diary-avatar-circle">
+                    <div className="diary-avatar-photo">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/profile-shark.png" alt="프로필: 8비트 픽셀 상어" />
+                    </div>
+                    <Link href="/" className="diary-avatar-badge" aria-label="홈으로">
+                      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                        <path d="M6 1h2v1h1v1h1v1h1v1h1v1h1v2h-1v5H9V9H5v4H2V8H1V6h1V5h1V4h1V3h1V2h1z" fill="currentColor" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
                 <MiniGrass />
                 <nav className="diary-counts" aria-label="카테고리별 글 수">
