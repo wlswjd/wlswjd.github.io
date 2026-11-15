@@ -1,12 +1,11 @@
 import Link from 'next/link'
-import { getAllPostMetas, getAllTags } from '@/lib/posts'
+import { getAllPostMetas } from '@/lib/posts'
 import MiniRoom from '@/components/diary/MiniRoom'
 import NowPlaying from '@/components/diary/NowPlaying'
 
 export default function HomePage() {
   const posts = getAllPostMetas()
   const recent = posts.slice(0, 6)
-  const tags = getAllTags().slice(0, 12)
 
   return (
     <div className="diary-home">
@@ -38,13 +37,6 @@ export default function HomePage() {
         </div>
         <div className="diary-room">
           <MiniRoom />
-          <div className="tag-cloud">
-            {tags.map(({ tag }) => (
-              <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`} className="tag-cloud-item">
-                #{tag}
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
     </div>
