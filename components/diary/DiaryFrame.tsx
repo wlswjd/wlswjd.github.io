@@ -71,16 +71,17 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                     </Link>
                   </div>
                 </div>
-                <MiniGrass />
-                <nav className="diary-counts" aria-label="카테고리별 글 수">
-                  {counts.map(c => (
-                    <Link key={c.href} href={c.href} className="diary-count">
-                      <span>{c.label}</span>
-                      <b>{c.count}</b>
-                    </Link>
-                  ))}
-                </nav>
-                <div className="diary-spacer" />
+                <div className="diary-profile-stats">
+                  <MiniGrass />
+                  <nav className="diary-counts" aria-label="카테고리별 글 수">
+                    {counts.map(c => (
+                      <Link key={c.href} href={c.href} className="diary-count">
+                        <span>{c.label}</span>
+                        <b>{c.count}</b>
+                      </Link>
+                    ))}
+                  </nav>
+                </div>
                 <div className="diary-contact">
                   <div className="diary-contact-icons">
                     <a href="https://github.com/wlswjd" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

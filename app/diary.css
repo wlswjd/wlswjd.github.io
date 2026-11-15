@@ -179,8 +179,8 @@ body {
 
 .diary-avatar-circle {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 168px;
+  height: 168px;
 }
 .diary-avatar-photo {
   width: 100%;
@@ -218,6 +218,15 @@ body {
 
 
 .diary-spacer { flex-grow: 1; }
+
+/* 잔디 + 카테고리 수: 아바타와 하단 연락처 사이 남는 공간의 가운데쯤에 */
+.diary-profile-stats {
+  margin: auto 0;
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
 .diary-contact {
   display: flex;
