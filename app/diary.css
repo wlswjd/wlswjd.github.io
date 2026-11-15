@@ -219,14 +219,14 @@ body {
 
 .diary-spacer { flex-grow: 1; }
 
-/* 잔디 + 카테고리 수: 아바타와 하단 연락처 사이 남는 공간의 가운데쯤에 */
+/* 프사 → 잔디 → 카테고리 수 간격을 같게 (24px). 연락처는 맨 아래로. */
 .diary-profile-stats {
-  margin: auto 0;
-  padding: 12px 0;
+  margin-top: 14px; /* + 프로필 기본 gap 10px = 24px */
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
 }
+.diary-profile-stats + .diary-contact { margin-top: auto; }
 
 .diary-contact {
   display: flex;
