@@ -6,8 +6,9 @@
 :root {
   --desk: #e9edf1;
   --desk-dot: #d6dde4;
-  --binder-dash: #209cee;
-  --paper-edge: #8ccaf5;
+  --binder-dash: #9aa4ae;
+  --paper-edge: #d7dde3;
+  --page-edge: #209cee;
   --ring: #e3e6ea;
   --tab: #1673b3;
   --accent-text: #0f6aa8;
@@ -17,8 +18,9 @@
 [data-theme='dark'] {
   --desk: #121216;
   --desk-dot: #24242b;
-  --binder-dash: #4fb6ff;
-  --paper-edge: #2b6a99;
+  --binder-dash: #4a4a52;
+  --paper-edge: #3a3a42;
+  --page-edge: #4fb6ff;
   --ring: #55555e;
   --tab: #1673b3;
   --accent-text: #6cc3ff;
@@ -29,15 +31,6 @@ body {
   background-color: var(--desk);
   background-image: radial-gradient(var(--desk-dot) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
 }
 
 /* ─── Frame ─────────────────────────────────────────────── */
@@ -75,7 +68,7 @@ body {
 }
 
 .diary-binder-inner {
-  border: 2px dashed var(--binder-dash);
+  border: 2px dashed var(--page-edge);
   border-radius: 12px;
   padding: 18px 20px 20px;
   height: 100%;
@@ -125,7 +118,7 @@ body {
 
 .diary-page {
   background: var(--surface);
-  border: 1px solid var(--paper-edge);
+  border: 2px solid var(--page-edge);
   border-radius: 12px;
   box-sizing: border-box;
 }
@@ -313,20 +306,48 @@ body {
   flex-direction: column;
   gap: 16px;
 }
-.diary-room .github-chart { border: none; background: #fff; padding: 6px; }
+.diary-room-svg { display: block; width: 100%; max-width: 640px; height: auto; margin: 0 auto; }
 
-.diary-guestbook { display: flex; gap: 8px; align-items: center; }
-.diary-guestbook .nes-input { flex: 1; min-width: 0; font-size: 13px; }
+/* 왼쪽 프로필의 잔디 (최근 8주, 7×8 정사각형 그리드) */
+.diary-grass {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--paper-edge);
+  color: inherit;
+}
+.diary-grass:hover { text-decoration: none; }
+.diary-grass-label { font-size: 12px; font-weight: 700; color: var(--accent-text); }
+.diary-grass-grid {
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 3px;
+}
+.grass-cell { aspect-ratio: 1; background: #e4e8ec; }
+.grass-cell.lv--1 { background: transparent; }
+.grass-cell.lv-1 { background: #bfe6ff; }
+.grass-cell.lv-2 { background: #7cc6f7; }
+.grass-cell.lv-3 { background: #209cee; }
+.grass-cell.lv-4 { background: #1673b3; }
+[data-theme='dark'] .grass-cell { background: #2a2a31; }
+[data-theme='dark'] .grass-cell.lv--1 { background: transparent; }
+[data-theme='dark'] .grass-cell.lv-1 { background: #1c3d57; }
+[data-theme='dark'] .grass-cell.lv-2 { background: #22628f; }
+[data-theme='dark'] .grass-cell.lv-3 { background: #2f8fd6; }
+[data-theme='dark'] .grass-cell.lv-4 { background: #6cc3ff; }
+
 
 /* 우측 페이지 안의 포스트 카드: 얇은 파란 테두리, 작은 여백, 태그 숨김 */
 .diary-main .post-card,
 [data-theme='dark'] .diary-main .post-card {
   border-width: 2px;
-  border-color: var(--paper-edge);
+  border-color: var(--border);
   padding: 12px 16px;
   margin-bottom: 10px;
 }
-.diary-main .post-card:hover { border-color: var(--binder-dash); }
 .diary-main .post-card-inner { padding: 0; }
 .diary-main .post-card-meta { margin-bottom: 4px; }
 .diary-main .post-card-title { font-size: 15px; margin-bottom: 4px; }

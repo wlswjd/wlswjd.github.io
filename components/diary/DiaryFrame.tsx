@@ -4,6 +4,7 @@ import ThemeToggle from '@/components/ThemeToggle'
 import PixelAvatar from './PixelAvatar'
 import DiaryTabs from './DiaryTabs'
 import DiaryMain from './DiaryMain'
+import MiniGrass from './MiniGrass'
 
 function Rings() {
   return (
@@ -53,6 +54,7 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                 <div className="diary-avatar">
                   <PixelAvatar size={128} />
                 </div>
+                <MiniGrass />
                 <p className="diary-intro">
                   머신러닝 · LLM Agent · 게임 AI
                   <br />

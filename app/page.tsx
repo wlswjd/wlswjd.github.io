@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getAllPostMetas, getAllTags } from '@/lib/posts'
 import { CATEGORY_TREE } from '@/lib/categories'
+import MiniRoom from '@/components/diary/MiniRoom'
 
 export default function HomePage() {
   const posts = getAllPostMetas()
@@ -45,17 +46,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mini room → 잔디밭 */}
+      {/* Mini room */}
       <section>
         <div className="diary-room-tabs">
-          <b>잔디밭</b> | 태그
+          <b>Miniroom</b>
         </div>
         <div className="diary-room">
-          <img
-            className="github-chart"
-            src="https://ghchart.rshah.org/209cee/wlswjd"
-            alt="GitHub 기여 그래프"
-          />
+          <MiniRoom />
           <div className="tag-cloud">
             {tags.map(({ tag }) => (
               <Link key={tag} href={`/tag/${encodeURIComponent(tag)}`} className="tag-cloud-item">
@@ -63,24 +60,6 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Guestbook (prototype placeholder) */}
-      <section>
-        <h2 className="diary-section-title">방명록 한 줄</h2>
-        <div className="diary-guestbook">
-          <label htmlFor="guestbook" className="visually-hidden">방명록 남기기</label>
-          <input
-            id="guestbook"
-            className="nes-input"
-            type="text"
-            placeholder="준비 중이에요 (GitHub 로그인 방명록 예정)"
-            disabled
-          />
-          <button type="button" className="nes-btn is-disabled" disabled>
-            남기기
-          </button>
         </div>
       </section>
     </div>

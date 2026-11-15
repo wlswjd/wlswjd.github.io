@@ -28,6 +28,19 @@ const PALETTE: Record<string, string> = {
   W: '#ffffff',
 }
 
+// SVG 안에 바로 넣을 수 있는 픽셀들 (미니룸의 미니미용)
+export function AvatarPixels() {
+  return (
+    <>
+      {ROWS.flatMap((row, y) =>
+        [...row].map((ch, x) =>
+          PALETTE[ch] ? <rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} fill={PALETTE[ch]} /> : null,
+        ),
+      )}
+    </>
+  )
+}
+
 export default function PixelAvatar({ size = 128 }: { size?: number }) {
   return (
     <svg
@@ -38,11 +51,7 @@ export default function PixelAvatar({ size = 128 }: { size?: number }) {
       role="img"
       aria-label="픽셀 아바타"
     >
-      {ROWS.flatMap((row, y) =>
-        [...row].map((ch, x) =>
-          PALETTE[ch] ? <rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} fill={PALETTE[ch]} /> : null,
-        ),
-      )}
+      <AvatarPixels />
     </svg>
   )
 }
