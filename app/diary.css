@@ -1,0 +1,330 @@
+/* ─── Diary (minihompy-style) prototype ──────────────────────
+   globals.css 변수(--bg, --surface, --accent …)를 그대로 써서
+   라이트/다크 모드가 같이 동작합니다. 롤백하려면 이 파일과
+   components/diary/ 를 지우고 layout.tsx 를 되돌리면 됩니다. */
+
+:root {
+  --desk: #e9edf1;
+  --desk-dot: #d6dde4;
+  --binder-dash: #9aa4ae;
+  --paper-edge: #d7dde3;
+  --ring: #e3e6ea;
+  --tab: #1673b3;
+  --accent-text: #0f6aa8;
+  --hot: #c4452d;
+}
+
+[data-theme='dark'] {
+  --desk: #121216;
+  --desk-dot: #24242b;
+  --binder-dash: #4a4a52;
+  --paper-edge: #3a3a42;
+  --ring: #55555e;
+  --tab: #1673b3;
+  --accent-text: #6cc3ff;
+  --hot: #ff8a72;
+}
+
+body {
+  background-color: var(--desk);
+  background-image: radial-gradient(var(--desk-dot) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ─── Frame ─────────────────────────────────────────────── */
+.diary-desk { padding: 48px 16px; }
+
+.diary-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+}
+
+.diary-binder {
+  flex: 1;
+  min-width: 0;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 2px 0 var(--paper-edge), 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.diary-binder-inner {
+  border: 2px dashed var(--binder-dash);
+  border-radius: 12px;
+  padding: 18px 20px 20px;
+}
+
+/* ─── Top strip ─────────────────────────────────────────── */
+.diary-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  margin-bottom: 14px;
+}
+
+.diary-counter {
+  flex: 0 0 236px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text-muted);
+}
+.diary-counter b { color: var(--text); font-weight: 400; }
+.diary-counter .diary-hot { color: var(--hot); }
+
+.diary-heading {
+  flex: 1 1 300px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.diary-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-text);
+}
+.diary-title:hover { text-decoration: none; }
+
+.diary-url { font-size: 12px; color: var(--text-muted); }
+
+/* ─── Pages ─────────────────────────────────────────────── */
+.diary-pages { display: flex; align-items: stretch; }
+
+.diary-page {
+  background: var(--surface);
+  border: 1px solid var(--paper-edge);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.diary-profile {
+  flex: 0 0 236px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 16px;
+  align-self: flex-start;
+  min-height: 560px;
+}
+
+.diary-main {
+  flex: 1;
+  min-width: 0;
+  padding: 20px 24px;
+}
+
+.diary-rings {
+  flex: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 72px 0;
+  max-height: 560px;
+}
+.diary-rings > div { display: flex; flex-direction: column; gap: 10px; }
+.diary-rings span {
+  display: block;
+  height: 8px;
+  margin: 0 -6px;
+  border-radius: 6px;
+  background: var(--ring);
+  border: 1px solid var(--binder-dash);
+}
+
+/* ─── Profile ───────────────────────────────────────────── */
+.diary-today {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--paper-edge);
+  font-size: 13px;
+}
+.diary-today-label {
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--accent-text);
+}
+
+.diary-avatar {
+  display: flex;
+  justify-content: center;
+  padding: 18px 0;
+  border: 1px solid var(--paper-edge);
+  background: var(--bg);
+}
+
+.diary-intro {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--accent-text);
+}
+
+.diary-spacer { flex-grow: 1; }
+
+.diary-contact {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--paper-edge);
+}
+
+/* ─── Side tabs ─────────────────────────────────────────── */
+.diary-tabs {
+  flex: 0 0 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 72px;
+  margin-left: -6px;
+  position: sticky;
+  top: 16px;
+}
+
+.diary-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--tab);
+  border: 1px solid var(--tab);
+  border-left: 0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+.diary-tab:hover { text-decoration: none; filter: brightness(1.1); color: #fff; }
+.diary-tab.active {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--paper-edge);
+}
+
+/* ─── Home ──────────────────────────────────────────────── */
+.diary-home { display: flex; flex-direction: column; gap: 24px; }
+
+.diary-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-text);
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--paper-edge);
+}
+
+.diary-updated { display: flex; flex-wrap: wrap; gap: 16px 28px; }
+.diary-news { flex: 999 1 300px; min-width: 0; }
+
+.diary-news-list { list-style: none; margin: 0; padding: 0; }
+
+.diary-news-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 0;
+  font-size: 14px;
+  color: var(--text);
+  min-width: 0;
+}
+.diary-news-item:hover { color: var(--accent-text); }
+
+.diary-news-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.diary-badge {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: #fff;
+  background: #1673b3;
+}
+.diary-badge.is-project { background: #c4452d; }
+.diary-badge.is-daily { background: #3f7a12; }
+
+.diary-counts {
+  flex: 1 1 220px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 18px;
+  align-content: start;
+  font-size: 14px;
+}
+
+.diary-count {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--binder-dash);
+  color: var(--text);
+}
+.diary-count b { color: var(--accent-text); }
+.diary-count:hover { text-decoration: none; color: var(--accent-text); }
+
+.diary-room-tabs {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.diary-room-tabs b { color: var(--accent-text); }
+
+.diary-room {
+  border: 1px solid var(--paper-edge);
+  background: var(--bg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.diary-room .github-chart { border: none; background: #fff; padding: 6px; }
+
+.diary-guestbook { display: flex; gap: 8px; align-items: center; }
+.diary-guestbook .nes-input { flex: 1; min-width: 0; font-size: 13px; }
+
+/* 우측 페이지 안에서는 기존 카드 여백을 조금 줄임 */
+.diary-main .post-card { margin-bottom: 14px; }
+
+/* ─── Responsive ────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .diary-desk { padding: 16px 8px; }
+  .diary-shell { flex-direction: column-reverse; }
+  .diary-tabs {
+    position: static;
+    flex: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 0 0 12px;
+    margin: 0 0 -6px;
+  }
+  .diary-tab { border-radius: 8px 8px 0 0; padding: 0 12px; height: 36px; border: 1px solid var(--tab); border-bottom: 0; }
+  .diary-binder { width: 100%; box-sizing: border-box; }
+  .diary-pages { flex-direction: column; gap: 12px; }
+  .diary-rings { display: none; }
+  .diary-profile { position: static; min-height: 0; flex: none; }
+  .diary-avatar { display: none; }
+  .diary-counter { flex-basis: auto; }
+  .diary-main { padding: 16px; }
+}
