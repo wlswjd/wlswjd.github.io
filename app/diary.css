@@ -1,0 +1,594 @@
+/* ─── Diary (minihompy-style) prototype ──────────────────────
+   globals.css 변수(--bg, --surface, --accent …)를 그대로 써서
+   라이트/다크 모드가 같이 동작합니다. 롤백하려면 이 파일과
+   components/diary/ 를 지우고 layout.tsx 를 되돌리면 됩니다. */
+
+:root {
+  --desk: #e9edf1;
+  --desk-dot: #d6dde4;
+  --binder-dash: #9aa4ae;
+  --paper-edge: #d7dde3;
+  --page-edge: #afd7f4;
+  --ring: #e3e6ea;
+  --tab: #1673b3;
+  --accent-text: #0f6aa8;
+  --hot: #c4452d;
+}
+
+[data-theme='dark'] {
+  --desk: #121216;
+  --desk-dot: #24242b;
+  --binder-dash: #4a4a52;
+  --paper-edge: #3a3a42;
+  --page-edge: #afd7f4;
+  --ring: #55555e;
+  --tab: #1673b3;
+  --accent-text: #6cc3ff;
+  --hot: #ff8a72;
+}
+
+body {
+  background-color: var(--desk);
+  background-image: radial-gradient(var(--desk-dot) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+/* ─── Frame ─────────────────────────────────────────────── */
+/* 바인더 크기: 화면 높이에 맞추고(최대 960px), 가로는 높이의 1.6배(16:10).
+   화면이 좁으면 가로 폭이 먼저 줄어든다. 페이지 자체는 스크롤되지 않고
+   오른쪽 페이지만 내부 스크롤. */
+:root {
+  --book-h: min(calc(100vh - 64px), 960px);
+  --book-w: min(calc(var(--book-h) * 1.6), calc(100vw - 160px));
+}
+
+.diary-desk {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 32px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diary-shell {
+  display: flex;
+  align-items: flex-start;
+}
+
+.diary-binder {
+  width: var(--book-w);
+  height: var(--book-h);
+  min-height: 600px;
+  box-sizing: border-box;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 2px 0 var(--paper-edge), 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.diary-binder-inner {
+  border: 2px dashed var(--page-edge);
+  border-radius: 12px;
+  padding: 18px 20px 20px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Top strip ─────────────────────────────────────────── */
+.diary-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  margin-bottom: 14px;
+}
+
+.diary-counter {
+  flex: 0 0 236px;
+  text-align: center;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--text-muted);
+}
+.diary-counter b { color: var(--text); font-weight: 400; }
+.diary-counter .diary-hot { color: var(--hot); }
+
+.diary-heading {
+  flex: 1 1 300px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.diary-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-text);
+}
+.diary-title:hover { text-decoration: none; }
+
+.diary-url { font-size: 12px; color: var(--text-muted); }
+
+/* ─── Pages ─────────────────────────────────────────────── */
+.diary-pages { flex: 1; min-height: 0; display: flex; align-items: stretch; }
+
+.diary-page {
+  background: var(--surface);
+  border: 2px solid var(--page-edge);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.diary-profile {
+  flex: 0 0 236px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.diary-main {
+  flex: 1;
+  min-width: 0;
+  padding: 20px 24px;
+  overflow-y: auto;
+}
+
+.diary-rings {
+  flex: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 72px 0;
+}
+.diary-rings > div { display: flex; flex-direction: column; gap: 10px; }
+.diary-rings span {
+  display: block;
+  height: 8px;
+  margin: 0 -6px;
+  border-radius: 6px;
+  background: var(--ring);
+  border: 1px solid var(--binder-dash);
+}
+
+/* ─── Profile ───────────────────────────────────────────── */
+.diary-today {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid var(--paper-edge);
+  font-size: 13px;
+}
+.diary-today { overflow: hidden; }
+/* 노래 제목: 라디오 전광판처럼 한 줄로 흘러가기 */
+.diary-marquee {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.diary-marquee-track {
+  display: inline-flex;
+  animation: diary-marquee 12s linear infinite;
+}
+.diary-marquee-track b { padding-right: 2.5em; font-weight: 700; }
+.diary-today:hover .diary-marquee-track { animation-play-state: paused; }
+@keyframes diary-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .diary-marquee-track { animation: none; }
+}
+.diary-today-label {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  color: var(--accent-text);
+}
+
+.diary-avatar {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+
+.diary-avatar-circle {
+  position: relative;
+  width: 168px;
+  height: 168px;
+}
+.diary-avatar-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--paper-edge);
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #000;
+}
+.diary-avatar-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.9) translateY(-0.5%);
+}
+
+.diary-avatar-badge {
+  position: absolute;
+  right: 2px;
+  bottom: 4px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  color: var(--accent-text);
+  border: 2px solid var(--paper-edge);
+  box-sizing: border-box;
+}
+.diary-avatar-badge:hover { border-color: var(--accent); }
+.diary-avatar-badge .nes-icon { margin: 0; }
+
+
+.diary-spacer { flex-grow: 1; }
+
+/* 프사 → 잔디 → 카테고리 수 간격을 같게 (24px). 연락처는 맨 아래로. */
+.diary-profile-stats {
+  margin-top: 14px; /* + 프로필 기본 gap 10px = 24px */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.diary-profile-stats + .diary-contact { margin-top: auto; }
+
+.diary-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--paper-edge);
+}
+.diary-contact-icons { display: flex; align-items: center; gap: 12px; }
+.diary-icon-itch { display: flex; }
+.diary-icon-itch img { display: block; width: 16px; height: 16px; border-radius: 2px; }
+.diary-contact .theme-switch-label { display: none; }
+
+/* ─── Side tabs ─────────────────────────────────────────── */
+.diary-tabs {
+  flex: 0 0 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 72px;
+  margin-left: -6px;
+}
+
+.diary-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--tab);
+  border: 1px solid var(--tab);
+  border-left: 0;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+.diary-tab:hover { text-decoration: none; filter: brightness(1.1); color: #fff; }
+.diary-tab.active {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--paper-edge);
+}
+
+/* ─── Home ──────────────────────────────────────────────── */
+/* 홈은 오른쪽 페이지 높이에 딱 맞춤: 미니룸이 남는 높이를 채운다 */
+.diary-home { display: flex; flex-direction: column; gap: 16px; height: 100%; min-height: 0; }
+.diary-home > .diary-updated { flex: 0 0 auto; }
+.diary-home > .diary-miniroom { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; }
+
+.diary-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-text);
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--paper-edge);
+}
+
+.diary-updated { display: grid; grid-template-columns: minmax(0, 600px) minmax(260px, 1fr); gap: 16px 28px; align-items: start; }
+.diary-news { min-width: 0; }
+
+.diary-news-list { list-style: none; margin: 0; padding: 0; }
+
+.diary-news-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  font-size: 14px;
+  color: var(--text);
+  min-width: 0;
+}
+.diary-news-item:hover { color: var(--accent-text); }
+
+.diary-news-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.diary-badge {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: #fff;
+  background: #1673b3;
+}
+.diary-badge.is-project { background: #c4452d; }
+.diary-badge.is-daily { background: #3f7a12; }
+
+/* 왼쪽 프로필의 카테고리 수 (작고 촘촘하게) */
+.diary-counts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--paper-edge);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.diary-count {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 3px 0;
+  border-bottom: 1px dotted var(--binder-dash);
+  color: var(--text);
+  min-width: 0;
+}
+.diary-count span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.diary-count b { color: var(--accent-text); }
+.diary-count:hover { text-decoration: none; color: var(--accent-text); }
+/* 프로필 칸이 좁아도 위쪽 상자들이 찌그러지지 않게 (넘치면 프로필만 스크롤) */
+.diary-profile > * { flex-shrink: 0; }
+
+/* 지금 듣는 노래 (세로형: 커버 위, 정보 아래) */
+.now-playing {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px 12px;
+  border: 1px solid var(--paper-edge);
+  background: var(--bg);
+  align-self: start;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.now-playing-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+  color: var(--accent-text);
+}
+.now-playing-eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 10px; }
+.now-playing-eq i { width: 3px; background: var(--accent); animation: np-eq 0.9s steps(3) infinite; }
+.now-playing-eq i:nth-child(2) { animation-delay: -0.3s; }
+.now-playing-eq i:nth-child(3) { animation-delay: -0.6s; }
+@keyframes np-eq { 0% { height: 3px; } 50% { height: 10px; } 100% { height: 5px; } }
+
+.now-playing-cover {
+  align-self: center;
+  width: 170px;
+  aspect-ratio: 1;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+.now-playing-cover svg,
+.now-playing-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.now-playing-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.now-playing-artist { font-size: 13px; color: var(--accent-text); }
+.now-playing-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.diary-room-tabs {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.diary-room-tabs b { color: var(--accent-text); }
+
+.diary-room {
+  position: relative;
+  container-type: inline-size;
+  flex: 1 1 0;
+  min-height: 0;
+  border: 1px solid var(--paper-edge);
+  background: var(--bg);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.diary-room-svg { display: block; flex: 1 1 0; min-height: 0; width: 100%; height: 100%; }
+
+/* 왼쪽 프로필의 잔디 (최근 8주, 7×8 정사각형 그리드) */
+.diary-grass {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--paper-edge);
+  color: inherit;
+}
+.diary-grass:hover { text-decoration: none; }
+.diary-grass-grid {
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: repeat(7, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 3px;
+}
+.grass-cell { aspect-ratio: 1; background: #ebedf0; }
+.grass-cell.lv--1 { background: transparent; }
+.grass-cell.lv-1 { background: #9be9a8; }
+.grass-cell.lv-2 { background: #40c463; }
+.grass-cell.lv-3 { background: #30a14e; }
+.grass-cell.lv-4 { background: #216e39; }
+[data-theme='dark'] .grass-cell { background: #2a2a31; }
+[data-theme='dark'] .grass-cell.lv--1 { background: transparent; }
+[data-theme='dark'] .grass-cell.lv-1 { background: #0e4429; }
+[data-theme='dark'] .grass-cell.lv-2 { background: #006d32; }
+[data-theme='dark'] .grass-cell.lv-3 { background: #26a641; }
+[data-theme='dark'] .grass-cell.lv-4 { background: #39d353; }
+
+
+/* 우측 페이지 안의 포스트 카드: 얇은 파란 테두리, 작은 여백, 태그 숨김 */
+.diary-main .post-card,
+[data-theme='dark'] .diary-main .post-card {
+  border-width: 2px;
+  border-color: var(--border);
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+.diary-main .post-card-inner { padding: 0; }
+.diary-main .post-card-meta { margin-bottom: 4px; }
+.diary-main .post-card-title { font-size: 15px; margin-bottom: 4px; }
+.diary-main .post-card-desc { font-size: 13px; margin-bottom: 6px; }
+.diary-main .post-tags { display: none; }
+.diary-main .read-more-btn { font-size: 9px !important; padding: 2px 8px !important; }
+
+/* ─── Responsive ────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .diary-desk { padding: 16px 8px; display: block; min-height: 0; }
+  .diary-binder { height: auto; min-height: 0; }
+  .diary-binder-inner { height: auto; }
+  .diary-main, .diary-profile { overflow: visible; }
+  .diary-shell { flex-direction: column-reverse; }
+  .diary-tabs {
+    position: static;
+    flex: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 0 0 12px;
+    margin: 0 0 -6px;
+  }
+  .diary-tab { border-radius: 8px 8px 0 0; padding: 0 12px; height: 36px; border: 1px solid var(--tab); border-bottom: 0; }
+  .diary-binder { width: 100%; box-sizing: border-box; }
+  .diary-pages { flex-direction: column; gap: 12px; }
+  .diary-rings { display: none; }
+  .diary-profile { position: static; min-height: 0; flex: none; }
+  .diary-avatar { display: none; }
+  .diary-counter { flex-basis: auto; }
+  .diary-main { padding: 16px; }
+  .diary-home { height: auto; }
+  .diary-home > .diary-miniroom, .diary-room { flex: none; }
+  .diary-room-svg { height: auto; flex: none; }
+  .diary-updated { grid-template-columns: 1fr; }
+}
+
+/* Now Playing 자리: 일단 빈 상자 */
+.now-playing.is-empty { min-height: 260px; align-self: stretch; }
+
+/* 카테고리 하위 버튼: 예전 사이드바 태그처럼 파란 테두리 */
+.diary-main .sub-cat-btn {
+  font-size: 11px;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 3px 10px;
+  line-height: 1.4;
+  transition: background 0.1s, color 0.1s;
+}
+.diary-main .sub-cat-btn:hover,
+.diary-main .sub-cat-btn.is-active { background: var(--accent); color: #fff; text-decoration: none; }
+
+/* 글 페이지 뒤로가기 */
+.diary-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 3px 10px;
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--accent);
+  background: none;
+  border: 2px solid var(--accent);
+  cursor: pointer;
+}
+.diary-back:hover { background: var(--accent); color: #fff; }
+
+/* 테마 토글 앞 해/달 아이콘 */
+.theme-icon-btn { padding: 4px; border-radius: 6px; transition: background 0.15s; }
+.theme-icon-btn:hover { background: var(--hover-bg, rgba(127,127,127,0.15)); }
+.theme-mode-icon { display: inline-flex; width: 24px; height: 24px; }
+.theme-mode-icon svg { display: block; }
+.theme-icon-moon { display: none !important; }
+[data-theme='dark'] .theme-icon-sun { display: none !important; }
+[data-theme='dark'] .theme-icon-moon { display: block !important; }
+
+/* 미니룸 준비중 오버레이 */
+.diary-room-soon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: clamp(14px, 5.2cqi, 48px); /* 미니룸 칸 너비에 맞춰 최대 48px */
+  letter-spacing: 4px;
+  text-align: center;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* 세로가 짧은 화면: 프사를 줄여서 프로필이 한 화면에 들어오게 */
+@media (max-height: 840px) and (min-width: 861px) {
+  .diary-avatar-circle { width: 128px; height: 128px; }
+  .diary-avatar { padding: 4px 0 0; }
+}

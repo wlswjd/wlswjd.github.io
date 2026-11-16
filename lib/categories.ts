@@ -13,11 +13,9 @@ export const CATEGORY_TREE: Category[] = [
     path: ['study'],
     children: [
       { id: 'math', label: '수학 (Math)', path: ['study', 'math'] },
-      { id: 'ml', label: '머신러닝 (ML)', path: ['study', 'ml'] },
-      { id: 'dl', label: '딥러닝 (DL)', path: ['study', 'dl'] },
-      { id: 'llm-agent', label: 'LLM Agent', path: ['study', 'llm-agent'] },
-      { id: 'code', label: '코딩 (CODE)', path: ['study', 'code'] },
       { id: 'papers', label: '논문 (Papers)', path: ['study', 'papers'] },
+      { id: 'ml', label: '머신러닝 (ML)', path: ['study', 'ml'] },
+      { id: 'code', label: '코딩 (CODE)', path: ['study', 'code'] },
     ],
   },
   {
@@ -25,9 +23,9 @@ export const CATEGORY_TREE: Category[] = [
     label: 'PROJECT',
     path: ['project'],
     children: [
+      { id: 'side-project', label: '사이드프로젝트 (SideProject)', path: ['project', 'side-project'] },
       { id: 'competition', label: '경진대회 (Competition)', path: ['project', 'competition'] },
       { id: 'game-qa', label: 'Game QA', path: ['project', 'game-qa'], hidden: true },
-      { id: 'side-project', label: '사이드프로젝트 (SideProject)', path: ['project', 'side-project'] },
     ],
   },
   {
@@ -35,8 +33,8 @@ export const CATEGORY_TREE: Category[] = [
     label: 'DAILY',
     path: ['daily'],
     children: [
-      { id: 'life', label: '일상 (Life)', path: ['daily', 'life'] },
       { id: 'books', label: '독서 (Books)', path: ['daily', 'books'] },
+      { id: 'life', label: '일상 (Life)', path: ['daily', 'life'] },
       { id: 'retrospective', label: '회고 (Retrospective)', path: ['daily', 'retrospective'], hidden: true },
     ],
   },

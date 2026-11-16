@@ -1,6 +1,7 @@
 import { getPostBySlug, getAllPostSlugs } from '@/lib/posts'
 import { getCategoryLabel } from '@/lib/categories'
 import Link from 'next/link'
+import BackButton from '@/components/diary/BackButton'
 import { notFound } from 'next/navigation'
 import { format } from 'date-fns'
 import { ko } from 'date-fns/locale'
@@ -36,6 +37,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <div>
+      <BackButton fallbackHref={categoryHref} />
       <div className="breadcrumb">
         <Link href="/">HOME</Link>
         <span className="breadcrumb-sep">&gt;</span>

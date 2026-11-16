@@ -1,27 +1,45 @@
+import Link from 'next/link'
 import { getAllPostMetas } from '@/lib/posts'
-import PostCard from '@/components/PostCard'
+import MiniRoom from '@/components/diary/MiniRoom'
+import NowPlaying from '@/components/diary/NowPlaying'
 
 export default function HomePage() {
-  const posts = getAllPostMetas().slice(0, 8)
+  const posts = getAllPostMetas()
+  const recent = posts.slice(0, 6)
 
   return (
-    <div>
-      <h2 className="section-title">
-        <span className="nes-icon is-small star"></span>
-        RECENT POSTS
-      </h2>
+    <div className="diary-home">
+      {/* Updated posts + now playing */}
+      <section className="diary-updated">
+        <div className="diary-news">
+          <h2 className="diary-section-title">Updated posts</h2>
+          <ul className="diary-news-list">
+            {recent.map(post => (
+              <li key={post.slug.join('/')}>
+                <Link href={`/posts/${post.slug.join('/')}`} className="diary-news-item">
+                  <span className={`diary-badge is-${post.categoryPath[0]}`}>
+                    {post.categoryPath[0]?.toUpperCase()}
+                  </span>
+                  <span className="diary-news-title">{post.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {posts.length === 0 ? (
-        <div className="empty-state">
-          <p>아직 작성된 포스트가 없습니다.</p>
+        <NowPlaying />
+      </section>
+
+      {/* Mini room */}
+      <section className="diary-miniroom">
+        <div className="diary-room-tabs">
+          <b>Miniroom</b>
         </div>
-      ) : (
-        <div className="posts-list">
-          {posts.map(post => (
-            <PostCard key={post.slug.join('/')} post={post} showCategory />
-          ))}
+        <div className="diary-room">
+          <MiniRoom />
+          <div className="diary-room-soon">COMING SOON...</div>
         </div>
-      )}
+      </section>
     </div>
   )
 }
