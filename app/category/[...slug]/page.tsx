@@ -60,7 +60,7 @@ export default async function CategoryPage({ params }: Props) {
             <Link
               key={child.id}
               href={`/category/${child.path.join('/')}`}
-              className="nes-btn sub-cat-btn"
+              className="sub-cat-btn"
             >
               {child.label}
             </Link>

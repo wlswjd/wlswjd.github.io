@@ -5,6 +5,7 @@ import ThemeToggle from '@/components/ThemeToggle'
 import DiaryTabs from './DiaryTabs'
 import DiaryMain from './DiaryMain'
 import MiniGrass from './MiniGrass'
+import { NOW_PLAYING } from './NowPlaying'
 
 function Rings() {
   return (
@@ -38,7 +39,7 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
               </div>
               <div className="diary-heading">
                 <Link href="/" className="diary-title">
-                  DEVLOG<span className="title-cursor">_</span> 공부하고 만들고 기록하는 방
+                  DEVLOG<span className="title-cursor">_</span>
                 </Link>
                 <a
                   href="https://github.com/wlswjd"
@@ -54,9 +55,12 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
             <div className="diary-pages">
               {/* Left page: profile */}
               <aside className="diary-page diary-profile">
-                <div className="diary-today">
-                  <span className="diary-today-label">TODAY IS..</span>
-                  <b>공부중</b>
+                <div className="diary-today" title={`${NOW_PLAYING.title} - ${NOW_PLAYING.artist}`}>
+                  <span className="diary-today-label">
+                    <span className="now-playing-eq" aria-hidden="true"><i /><i /><i /></span>
+                    NOW
+                  </span>
+                  <b>{NOW_PLAYING.title}</b>
                 </div>
                 <div className="diary-avatar">
                   <div className="diary-avatar-circle">

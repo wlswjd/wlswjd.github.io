@@ -48,7 +48,6 @@ export default async function MiniGrass() {
       className="diary-grass"
       aria-label="최근 8주 GitHub 기여 그래프 (GitHub에서 보기)"
     >
-      <span className="diary-grass-label">잔디밭 · 최근 8주</span>
       <div className="diary-grass-grid">
         {cells.map(c => (
           <span key={c.key} className={`grass-cell lv-${c.level}`} title={c.key} />
