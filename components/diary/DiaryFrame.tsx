@@ -103,6 +103,10 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                     <a href="mailto:wlswjd010629@gmail.com" aria-label="Gmail">
                       <i className="nes-icon google is-small"></i>
                     </a>
+                    <a href="https://wlswjd.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="itch.io (새 창)" className="diary-icon-itch">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/itchio.png" alt="" width={16} height={16} />
+                    </a>
                   </div>
                   <ThemeToggle />
                 </div>

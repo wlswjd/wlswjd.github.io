@@ -261,7 +261,9 @@ body {
   padding-top: 10px;
   border-top: 1px solid var(--paper-edge);
 }
-.diary-contact-icons { display: flex; gap: 12px; }
+.diary-contact-icons { display: flex; align-items: center; gap: 12px; }
+.diary-icon-itch { display: flex; }
+.diary-icon-itch img { display: block; width: 16px; height: 16px; border-radius: 2px; }
 .diary-contact .theme-switch-label { display: none; }
 
 /* ─── Side tabs ─────────────────────────────────────────── */
