@@ -554,3 +554,10 @@ body {
   cursor: pointer;
 }
 .diary-back:hover { background: var(--accent); color: #fff; }
+
+/* 테마 토글 앞 해/달 아이콘 */
+.theme-mode-icon { display: inline-flex; width: 16px; height: 16px; }
+.theme-mode-icon svg { display: block; }
+.theme-icon-moon { display: none !important; }
+[data-theme='dark'] .theme-icon-sun { display: none !important; }
+[data-theme='dark'] .theme-icon-moon { display: block !important; }
