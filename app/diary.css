@@ -575,7 +575,8 @@ body {
   background: rgba(0, 0, 0, 0.55);
   color: #fff;
   font-family: var(--font-pixel);
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+  font-size: clamp(20px, 3.4vw, 48px); /* 넓은 화면 48px, 좁으면 줄어듦 */
+  letter-spacing: 4px;
+  text-align: center;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
 }
