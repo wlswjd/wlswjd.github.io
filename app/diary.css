@@ -465,18 +465,18 @@ body {
   grid-auto-columns: 1fr;
   gap: 3px;
 }
-.grass-cell { aspect-ratio: 1; background: #e4e8ec; }
+.grass-cell { aspect-ratio: 1; background: #ebedf0; }
 .grass-cell.lv--1 { background: transparent; }
-.grass-cell.lv-1 { background: #bfe6ff; }
-.grass-cell.lv-2 { background: #7cc6f7; }
-.grass-cell.lv-3 { background: #209cee; }
-.grass-cell.lv-4 { background: #1673b3; }
+.grass-cell.lv-1 { background: #9be9a8; }
+.grass-cell.lv-2 { background: #40c463; }
+.grass-cell.lv-3 { background: #30a14e; }
+.grass-cell.lv-4 { background: #216e39; }
 [data-theme='dark'] .grass-cell { background: #2a2a31; }
 [data-theme='dark'] .grass-cell.lv--1 { background: transparent; }
-[data-theme='dark'] .grass-cell.lv-1 { background: #1c3d57; }
-[data-theme='dark'] .grass-cell.lv-2 { background: #22628f; }
-[data-theme='dark'] .grass-cell.lv-3 { background: #2f8fd6; }
-[data-theme='dark'] .grass-cell.lv-4 { background: #6cc3ff; }
+[data-theme='dark'] .grass-cell.lv-1 { background: #0e4429; }
+[data-theme='dark'] .grass-cell.lv-2 { background: #006d32; }
+[data-theme='dark'] .grass-cell.lv-3 { background: #26a641; }
+[data-theme='dark'] .grass-cell.lv-4 { background: #39d353; }
 
 
 /* 우측 페이지 안의 포스트 카드: 얇은 파란 테두리, 작은 여백, 태그 숨김 */
