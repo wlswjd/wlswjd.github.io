@@ -34,6 +34,10 @@ export default async function CategoryPage({ params }: Props) {
   const parentSlug = slug.length > 1 ? slug.slice(0, -1) : null
   const parentLabel = parentSlug ? getCategoryLabel(parentSlug) : null
 
+  // 하위 카테고리 버튼 줄: 상위 페이지면 자기 자식들, 하위 페이지면 형제들(현재 것은 선택 표시)
+  const rowSource = category?.children?.length ? category : parentSlug ? getCategoryByPath(parentSlug) : undefined
+  const subCategories = (rowSource?.children ?? []).filter(child => !child.hidden)
+
   return (
     <div>
       <div className="breadcrumb">
@@ -54,17 +58,24 @@ export default async function CategoryPage({ params }: Props) {
         <span className="section-subtitle">({posts.length})</span>
       </h2>
 
-      {category?.children && category.children.some(child => !child.hidden) && (
+      {subCategories.length > 0 && (
         <div className="sub-categories">
-          {category.children.filter(child => !child.hidden).map(child => (
-            <Link
-              key={child.id}
-              href={`/category/${child.path.join('/')}`}
-              className="sub-cat-btn"
-            >
-              {child.label}
-            </Link>
-          ))}
+          {subCategories.map(child => {
+            const active = child.path.join('/') === slug.join('/')
+            // 선택된 버튼을 다시 누르면 상위 카테고리(전체 보기)로 돌아간다
+            const href = active && parentSlug ? `/category/${parentSlug.join('/')}` : `/category/${child.path.join('/')}`
+            return (
+              <Link
+                key={child.id}
+                href={href}
+                className={`sub-cat-btn ${active ? 'is-active' : ''}`}
+                aria-current={active ? 'page' : undefined}
+                title={active ? '전체 보기로 돌아가기' : undefined}
+              >
+                {child.label}
+              </Link>
+            )
+          })}
         </div>
       )}
 

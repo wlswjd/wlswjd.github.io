@@ -437,6 +437,7 @@ body {
 
 .diary-room {
   position: relative;
+  container-type: inline-size;
   flex: 1 1 0;
   min-height: 0;
   border: 1px solid var(--paper-edge);
@@ -538,7 +539,8 @@ body {
   line-height: 1.4;
   transition: background 0.1s, color 0.1s;
 }
-.diary-main .sub-cat-btn:hover { background: var(--accent); color: #fff; text-decoration: none; }
+.diary-main .sub-cat-btn:hover,
+.diary-main .sub-cat-btn.is-active { background: var(--accent); color: #fff; text-decoration: none; }
 
 /* 글 페이지 뒤로가기 */
 .diary-back {
@@ -572,10 +574,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   color: #fff;
   font-family: var(--font-pixel);
-  font-size: clamp(20px, 3.4vw, 48px); /* 넓은 화면 48px, 좁으면 줄어듦 */
+  font-size: clamp(14px, 5.2cqi, 48px); /* 미니룸 칸 너비에 맞춰 최대 48px */
   letter-spacing: 4px;
   text-align: center;
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
