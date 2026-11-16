@@ -220,7 +220,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.9) translateY(2%);
+  transform: scale(1.9) translateY(-0.5%);
 }
 
 .diary-avatar-badge {
