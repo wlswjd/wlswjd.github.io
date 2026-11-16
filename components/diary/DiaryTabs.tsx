@@ -3,12 +3,13 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+const SEARCH_TAB = { label: '검색', href: '/search' }
+
 const TABS = [
   { label: '홈', href: '/' },
   { label: 'STUDY', href: '/category/study' },
   { label: 'PROJECT', href: '/category/project' },
   { label: 'DAILY', href: '/category/daily' },
-  { label: '검색', href: '/search' },
 ]
 
 function handlePortfolioClick(e: React.MouseEvent) {
@@ -40,8 +41,15 @@ export default function DiaryTabs() {
         )
       })}
       <a href="/portfolio.pdf" onClick={handlePortfolioClick} className="diary-tab">
-        포트폴리오
+        PORTFOLIO
       </a>
+      <Link
+        href={SEARCH_TAB.href}
+        className={`diary-tab ${pathname.startsWith(SEARCH_TAB.href) ? 'active' : ''}`}
+        aria-current={pathname.startsWith(SEARCH_TAB.href) ? 'page' : undefined}
+      >
+        {SEARCH_TAB.label}
+      </Link>
     </nav>
   )
 }

@@ -436,6 +436,7 @@ body {
 .diary-room-tabs b { color: var(--accent-text); }
 
 .diary-room {
+  position: relative;
   flex: 1 1 0;
   min-height: 0;
   border: 1px solid var(--paper-edge);
@@ -563,3 +564,18 @@ body {
 .theme-icon-moon { display: none !important; }
 [data-theme='dark'] .theme-icon-sun { display: none !important; }
 [data-theme='dark'] .theme-icon-moon { display: block !important; }
+
+/* 미니룸 준비중 오버레이 */
+.diary-room-soon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: var(--font-pixel);
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.6);
+}

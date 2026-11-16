@@ -37,6 +37,7 @@ export default function HomePage() {
         </div>
         <div className="diary-room">
           <MiniRoom />
+          <div className="diary-room-soon">COMING SOON...</div>
         </div>
       </section>
     </div>
