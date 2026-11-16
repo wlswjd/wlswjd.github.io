@@ -73,11 +73,15 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src="/images/profile-shark.png" alt="프로필: 8비트 픽셀 상어" />
                     </div>
-                    <Link href="/" className="diary-avatar-badge" aria-label="홈으로">
-                      <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-                        <path d="M6 1h2v1h1v1h1v1h1v1h1v1h1v2h-1v5H9V9H5v4H2V8H1V6h1V5h1V4h1V3h1V2h1z" fill="currentColor" />
-                      </svg>
-                    </Link>
+                    <a
+                      href="https://github.com/wlswjd"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="diary-avatar-badge"
+                      aria-label="GitHub (새 창)"
+                    >
+                      <i className="nes-icon github is-small"></i>
+                    </a>
                   </div>
                 </div>
                 <div className="diary-profile-stats">

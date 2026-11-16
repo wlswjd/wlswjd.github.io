@@ -239,6 +239,7 @@ body {
   box-sizing: border-box;
 }
 .diary-avatar-badge:hover { border-color: var(--accent); }
+.diary-avatar-badge .nes-icon { margin: 0; }
 
 
 .diary-spacer { flex-grow: 1; }
