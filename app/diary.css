@@ -369,6 +369,8 @@ body {
 .diary-count span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .diary-count b { color: var(--accent-text); }
 .diary-count:hover { text-decoration: none; color: var(--accent-text); }
+/* 프로필 칸이 좁아도 위쪽 상자들이 찌그러지지 않게 (넘치면 프로필만 스크롤) */
+.diary-profile > * { flex-shrink: 0; }
 
 /* 지금 듣는 노래 (세로형: 커버 위, 정보 아래) */
 .now-playing {
@@ -583,4 +585,10 @@ body {
   letter-spacing: 4px;
   text-align: center;
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* 세로가 짧은 화면: 프사를 줄여서 프로필이 한 화면에 들어오게 */
+@media (max-height: 840px) and (min-width: 861px) {
+  .diary-avatar-circle { width: 128px; height: 128px; }
+  .diary-avatar { padding: 4px 0 0; }
 }
