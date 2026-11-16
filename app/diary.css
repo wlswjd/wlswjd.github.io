@@ -556,7 +556,9 @@ body {
 .diary-back:hover { background: var(--accent); color: #fff; }
 
 /* 테마 토글 앞 해/달 아이콘 */
-.theme-mode-icon { display: inline-flex; width: 16px; height: 16px; }
+.theme-icon-btn { padding: 4px; border-radius: 6px; transition: background 0.15s; }
+.theme-icon-btn:hover { background: var(--hover-bg, rgba(127,127,127,0.15)); }
+.theme-mode-icon { display: inline-flex; width: 24px; height: 24px; }
 .theme-mode-icon svg { display: block; }
 .theme-icon-moon { display: none !important; }
 [data-theme='dark'] .theme-icon-sun { display: none !important; }
