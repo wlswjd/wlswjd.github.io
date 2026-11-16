@@ -36,8 +36,8 @@ export default function ThemeToggle() {
           <path fill="#f7d51d" d="M6 4h4v1h1v1h1v4h-1v1h-1v1H6v-1H5v-1H4V6h1V5h1z" />
         </svg>
         <svg className="theme-icon-moon" width="24" height="24" viewBox="0 0 16 16" shapeRendering="crispEdges">
-          <path fill="#ffe08a" d="M6 1h4v1H8v1H7v2H6v6h1v2h1v1h2v1H6v-1H4v-1H3v-1H2V5h1V4h1V3h1V2h1z" />
-          <path fill="#ffe08a" d="M12 3h1v1h-1zM14 6h1v1h-1z" />
+          <path fill="#ffe08a" d="M5 2h2v1h-2zM4 3h2v1h-2zM3 4h3v1h-3zM2 5h4v1h-4zM2 6h4v1h-4zM1 7h5v1h-5zM1 8h6v1h-6zM1 9h7v1h-7zM2 10h8v1h-8zM2 11h11v1h-11zM3 12h9v1h-9zM4 13h7v1h-7zM6 14h3v1h-3z" />
+          <path fill="#ffe08a" d="M11 3h1v1h-1zM14 6h1v1h-1z" />
         </svg>
       </span>
     </button>
