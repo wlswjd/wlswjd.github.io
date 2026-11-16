@@ -60,7 +60,12 @@ export default function DiaryFrame({ children }: { children: React.ReactNode }) 
                     <span className="now-playing-eq" aria-hidden="true"><i /><i /><i /></span>
                     NOW
                   </span>
-                  <b>{NOW_PLAYING.title}</b>
+                  <span className="diary-marquee">
+                    <span className="diary-marquee-track">
+                      <b>{NOW_PLAYING.title} · {NOW_PLAYING.artist}</b>
+                      <b aria-hidden="true">{NOW_PLAYING.title} · {NOW_PLAYING.artist}</b>
+                    </span>
+                  </span>
                 </div>
                 <div className="diary-avatar">
                   <div className="diary-avatar-circle">
