@@ -3,6 +3,7 @@ title: "HuggingFace 는 무엇이고, 어떻게 사용해야할까?"
 date: "2025-09-15"
 description: "AI 모델의 깃허브, HuggingFace 생태계를 이해하고 Transformers 라이브러리로 최신 모델을 활용하는 방법을 알아봅니다."
 tags: ["HuggingFace", "Transformers", "Datasets", "Accelerate"]
+hidden: true
 ---
 
 ##  TL;DR

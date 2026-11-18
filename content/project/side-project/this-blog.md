@@ -3,6 +3,7 @@ title: "개인 블로그 만들기 - Next.js + NES.css"
 date: "2025-01-20"
 description: "레트로 스타일 개인 블로그를 Next.js와 NES.css로 만든 과정을 기록합니다."
 tags: ["Next.js", "NES.css", "블로그", "사이드프로젝트"]
+hidden: true
 ---
 
 ## 동기

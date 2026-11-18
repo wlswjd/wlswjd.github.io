@@ -3,6 +3,7 @@ title: "선형 회귀 (Linear Regression) 완벽 이해"
 date: "2024-12-01"
 description: "선형 회귀의 수학적 원리부터 Python 구현까지."
 tags: ["선형회귀", "수학", "최적화"]
+hidden: true
 ---
 
 ## 선형 회귀의 목적

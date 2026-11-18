@@ -3,6 +3,7 @@ title: "사이드 프로젝트: 나만의 레트로 포트폴리오 사이트 �
 date: "2025"
 description: "윈도우 98 감성의 포트폴리오 사이트를 기획하고, CMD 터미널/미니게임/마스코트 등을 추가하며 인터랙티브하게 고도화한 개발 기록."
 tags: ["HTML", "CSS", "JavaScript", "98.css", "Canvas API"]
+hidden: true
 ---
 
 ### 1. Overview (기획 의도)

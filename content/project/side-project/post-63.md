@@ -3,6 +3,7 @@ title: "[로드맵] 2026년 2분기 단기 학습·사이드 프로젝트 실행
 date: "2026-04-12"
 description: "부트캠프 이후 학습 공백을 끊고, 기술 PM·AI 개발 직무를 겨냥해 5월 중순까지 포트폴리오 2종을 완성하기 위한 Q2 집중 로드맵. RAG 가이드봇·MCP 보스전 데모·일일 루틴·실행 원칙까지 한 번에 정리함."
 tags: ["RAG", "LLM", "MCP", "Game Demo", "Portfolio", "TOEIC"]
+hidden: true
 ---
 
 ### 1. 배경과 방향

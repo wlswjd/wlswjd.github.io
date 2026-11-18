@@ -3,6 +3,7 @@ title: "자연 언어 처리의 역사 개론"
 date: "2025-07-22"
 description: "규칙 기반부터 통계 기반, 딥러닝, 그리고 LLM까지 자연어 처리 기술의 발전 흐름과 패러다임 변화를 다룹니다."
 tags: ["NLP", "History", "Statistical NLP", "Deep Learning", "LLM"]
+hidden: true
 ---
 
 ##  TL;DR

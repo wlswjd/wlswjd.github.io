@@ -3,6 +3,7 @@ title: "Data-Centric AI: 고품질 데이터 구축을 위한 실무 가이드"
 date: "2025-05-15"
 description: "AI 프로젝트의 80%를 차지하는 데이터 구축 프로세스를 6단계로 나누어 설명하고, 실무적인 가이드를 제공함."
 tags: ["Data Collection", "Labeling", "Preprocessing"]
+hidden: true
 ---
 
 ##  TL;DR

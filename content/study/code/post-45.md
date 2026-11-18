@@ -3,6 +3,7 @@ title: "LangChain: 현업에서 AI 애플리케이션 구축하기"
 date: "2025-08-22"
 description: "LLM을 활용한 애플리케이션 개발 프레임워크 LangChain의 핵심 개념과 LCEL, 에이전트, RAG 등 실무 활용법을 다룹니다."
 tags: ["LangChain", "LLM", "Agents", "RAG", "LCEL"]
+hidden: true
 ---
 
 ##  TL;DR

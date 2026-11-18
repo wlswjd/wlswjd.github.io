@@ -15,6 +15,7 @@ export interface PostMeta {
   tags: string[]
   slug: string[]
   categoryPath: string[]
+  hidden: boolean
 }
 
 export interface Post extends PostMeta {
@@ -46,13 +47,14 @@ function parsePostMeta(filePath: string): PostMeta {
     tags: data.tags ?? [],
     slug: parts,
     categoryPath: parts.slice(0, -1),
+    hidden: data.hidden === true,
   }
 }
 
 export function getAllPostMetas(): PostMeta[] {
   return walkDir(CONTENT_DIR)
     .map(parsePostMeta)
-    .filter(p => !isCategoryHidden(p.categoryPath))
+    .filter(p => !p.hidden && !isCategoryHidden(p.categoryPath))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
@@ -80,15 +82,16 @@ export async function getPostBySlug(slug: string[]): Promise<Post | null> {
     tags: data.tags ?? [],
     slug: parts,
     categoryPath: parts.slice(0, -1),
+    hidden: data.hidden === true,
     contentHtml: processed.toString(),
   }
 }
 
 export function getAllPostSlugs(): string[][] {
-  return walkDir(CONTENT_DIR).map(filePath => {
-    const rel = path.relative(CONTENT_DIR, filePath)
-    return rel.replace(/\.md$/, '').split(path.sep)
-  })
+  return walkDir(CONTENT_DIR)
+    .map(parsePostMeta)
+    .filter(p => !p.hidden)
+    .map(p => p.slug)
 }
 
 export function getAllTags(): { tag: string; count: number }[] {

@@ -3,6 +3,7 @@ title: "Python 실무 팁 모음"
 date: "2024-11-15"
 description: "자주 쓰는 Python 패턴과 유용한 팁들을 정리했습니다."
 tags: ["Python", "Tips", "코딩"]
+hidden: true
 ---
 
 ## List Comprehension
