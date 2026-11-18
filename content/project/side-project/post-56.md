@@ -3,6 +3,7 @@ title: "[Project] 내 블로그 챗봇에게 '자아'를 심어주기 (Lightweig
 date: "2026-03-01"
 description: "Vector DB 없이 프롬프트 엔지니어링만으로 구현한 초경량 RAG. GitHub Pages와 Vercel 간의 CORS 및 405 Method Not Allowed 에러 해결 과정."
 tags: ["JavaScript", "Vercel", "Gemini API", "RAG", "CORS"]
+hidden : true
 ---
 
 ### 1. The Problem: "주인님 글이 뭐죠?"

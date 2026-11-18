@@ -3,6 +3,7 @@ title: "[기획 노트] 음악 문파 대전 (가제) – 리듬 액션 · 무�
 date: "2025-12-17"
 description: "AI가 소리를 데이터로 집어삼킨 세계에서 목소리만 남은 주인공이 문파를 통합하는 싱글 리듬 RPG. 멀티 모듈 리듬 엔진, 전투 수식, Librosa 기반 자동 채보, 그리고 앞으로 파야 할 판정·난이도·보스 FSM 설계까지 한 번에 정리함."
 tags: ["Game Design", "Rhythm Action", "RPG", "Librosa", "FSM"]
+hidden : true
 ---
 
 ### 1. 프로젝트 한 줄 정리

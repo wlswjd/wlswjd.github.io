@@ -3,6 +3,7 @@ title: "[스토리 v1.2] 🎵 율(律) — 현성 & 천마 캐릭터 심화 제�
 date: "2026-04-17"
 description: "현성(絃聖)의 “독주 철학”을 방어기제로 재해석하고, 천마 소현(蘇絃)의 AI 이식을 “강해지려는 욕망”이 아닌 “음악을 잃지 않기 위한 선택”으로 재설계해 테마-플롯-연출을 한 줄로 묶는 캐릭터 심화안(ver1.2)."
 tags: ["Game Design", "Narrative Design", "Character Design"]
+hidden : true
 ---
 
 ## 들어가며

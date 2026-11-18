@@ -3,6 +3,7 @@ title: "[사이드 프로젝트] 한국어 RAG에 RAGAS 평가 적용기 — 두
 date: "2026-05-12"
 description: "마인크래프트 위키 RAG와 유튜브 채널 RAG에 RAGAS를 적용하면서 만난 Gemini timeout, 평가용 프롬프트 미스매치, 골든셋의 한계까지 정리한 기록."
 tags: ["Side Project", "LLM Agent", "RAG", "RAGAS", "Evaluation", "ChromaDB"]
+hidden : true
 ---
 
 RAG를 직접 만들고 나면 자연스럽게 따라오는 질문이 있다. **“이게 진짜 잘 작동하는 걸까?”** 이 글은 두 개의 한국어 RAG 프로젝트(마인크래프트 위키 RAG, 유튜브 채널 RAG)에 RAGAS 평가 프레임워크를 적용하면서 만난 시행착오를 정리한 기록이다.

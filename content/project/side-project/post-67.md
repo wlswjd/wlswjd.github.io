@@ -3,6 +3,7 @@ title: "[스토리 v1.1] 🎵 율(律) — 게임 스토리 전체 요약"
 date: "2026-04-16"
 description: "어제 올린 [스토리 v1]에 이어, 세계관 핵심 설정·다섯 문파·핵심 인물 관계·전생/현생 플롯·최종결전 전략·엔딩 여운·게임 메카닉 연결 포인트까지 “한 편으로” 정리한 스토리 v1.1 요약본."
 tags: ["Game Design", "Narrative Design", "Worldbuilding"]
+hidden : true
 ---
 
 ## 들어가며

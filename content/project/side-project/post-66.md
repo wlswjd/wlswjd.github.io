@@ -3,6 +3,7 @@ title: "[스토리 v1] 🎵 율(律) — 선율이 곧 검이 되는 강호"
 date: "2026-04-15"
 description: "SOUND of VOICE 보스전 데모를 위한 스토리 초안(v1). 오성인과 천음귀환공의 전설, 회귀자 운율과 라이벌 현성, 다섯 문파의 합주로 AI 천마를 무너뜨리는 1악장까지를 정리함."
 tags: ["Game Design", "Narrative Design", "Worldbuilding"]
+hidden : true
 ---
 
 ## 세계관 프롤로그 — 오성인(五聲人)의 전설

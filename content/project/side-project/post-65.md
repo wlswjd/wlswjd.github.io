@@ -3,6 +3,7 @@ title: "[기획] SOUND of VOICE 보스전 데모 — MCP·AI 에이전트 4 Phas
 date: "2026-04-14"
 description: "5월 중순 데드라인 기준 가제 SOUND of VOICE 보스전 데모를 위해 기획 데이터화부터 통합·폴리싱까지 4단계로 나눈 작업 흐름, 사용자 vs AI 역할, 그리고 인터페이스 우선·컨텍스트 제한 등 에이전트 통제용 프롬프트 전략을 정리함."
 tags: ["MCP", "Cursor", "Game Dev", "Rhythm", "Prompt Engineering"]
+hidden : true
 ---
 
 **2026년 5월 중순**을 데드라인으로 두는 **가제 ‘SOUND of VOICE’** 보스전 데모를 위해, **MCP**와 **AI 에이전트**(Cursor 등)를 어떻게 쓸지 전체 과정을 **4개 페이즈**로 나누고 **작업 주체**와 **프롬프트 전략**을 구조화해 둔 메모임. 두 번째 사이드 프로젝트(게임·MCP 축)의 설계 문서 역할을 함.
