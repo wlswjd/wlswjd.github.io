@@ -35,7 +35,6 @@ export const CATEGORY_TREE: Category[] = [
     children: [
       { id: 'books', label: '독서 (Books)', path: ['daily', 'books'] },
       { id: 'life', label: '일상 (Life)', path: ['daily', 'life'] },
-      { id: 'retrospective', label: '회고 (Retrospective)', path: ['daily', 'retrospective'], hidden: true },
     ],
   },
 ]

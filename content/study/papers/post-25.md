@@ -1,50 +1,73 @@
 ---
-title: "[논문 리뷰] Item2Vec: Neural Item Embedding for Collaborative Filtering"
-date: "2025-12-15"
-description: "Word2Vec의 Skip-gram 모델을 추천 시스템에 적용하여, 아이템 간의 유사도를 벡터 공간에 임베딩하는 Item2Vec 방법론 분석."
-tags: ["Recommender System", "Word2Vec", "Embedding", "NLP"]
+title: "[논문 리뷰] Word2Vec: Efficient Estimation of Word Representations in Vector Space"
+date: "2026-01-14"
+description: "구문(프로젝트 내에서는 댓글과 같은)의 방대한 텍스트 데이터를 효율적으로 벡터화하는 CBOW와 Skip-gram 모델의 수학적 원리와 학습 최적화 기법(Negative Sampling) 분석"
+tags: ["NLP", "Deep Learning", "Word2Vec", "Numpy"]
 ---
 
-### 1. Overview
-2016년 Microsoft Research에서 발표한 **Item2Vec**은 자연어 처리(NLP) 분야의 Word2Vec(특히 Skip-gram) 아이디어를 추천 시스템에 그대로 이식하여 큰 성공을 거둔 논문임.
+### 1. Overview (연구 배경)
 
-기존의 협업 필터링(CF) 방식, 특히 SVD(Singular Value Decomposition)는 "유저-아이템 행렬"이 필요함. 하지만 현실 세계의 데이터는 유저 정보가 없거나(Cold Start), 데이터가 매우 희소(Sparse)한 경우가 많음. Item2Vec은 유저 식별자 없이 오직 **"세션(Session) 내의 아이템 목록"**만을 사용하여 아이템 간의 관계를 학습함.
+진행 중인 유튜브채널분석에서 댓글의 자연어 수집 후 분석에 앞서 텍스트를 기계가 이해할 수 있는 숫자(Vector)로 변환하는 과정의 원리를 이해하기 위해 해당 논문을 분석하고 구현 목표를 수립함.
+기존의 One-hot Encoding 방식은 단어 간의 유의미한 관계(Semantic Relationship)를 담지 못하고 차원이 너무 커지는 문제가 있음. 이에 따라 분산 표현(Distributed Representation)의 시초이자, 효율적인 연산량을 자랑하는 **Word2Vec (Mikolov et al., 2013)** 논문을 선정하여 분석하고 구현 목표를 수립함.
 
-즉, **"문장 속의 단어(Word in Sentence)"**를 **"장바구니 속의 상품(Item in Basket)"**으로 치환하여, 아이템 간의 잠재적 연관성을 벡터 공간에 임베딩하는 것이 핵심임.
+### 2. Problems & Solutions (문제와 해결)
 
-### 2. Methodology (핵심 모델 구조)
+**기존 NNLM(Neural Network Language Model)의 한계:**
+기존 언어 모델은 단어 예측을 위해 비선형적인 Hidden Layer(Tanh, Sigmoid 등)를 포함한 복잡한 연산을 수행함.
 
-#### [A] Skip-gram with Negative Sampling (SGNS)
-Item2Vec은 Word2Vec의 Skip-gram 모델을 차용함. 목표는 주어진 아이템 $w_i$가 있을 때, 같은 세션(장바구니)에 등장한 다른 아이템 $w_j$의 등장 확률을 최대화하는 것임.
+- **Computational Complexity:** $Q = N \times D + N \times D \times H + H \times V$
+- $N$(입력 개수), $D$(차원), $H$(은닉층), $V$(단어 수)가 모두 곱해지는 구조로, 데이터가 늘어날수록 학습 시간이 기하급수적으로 증가함.
 
-![Item2Vec Architecture](/images/item2vec_1.png)
-<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 1. Skip-gram model architecture applied to items</em></p>
+**Word2Vec의 제안:**
+"단어 표현의 정교함은 유지하되, 복잡한 비선형 Hidden Layer를 제거하자."
+단순한 행렬 곱(Log-linear model)만으로도 충분히 훌륭한 벡터를 얻을 수 있음을 증명하며, 계산 비용을 획기적으로 낮췄음.
 
-수식으로는 다음과 같이 정의됨.
-$$ \frac{1}{K} \sum_{i=1}^{K} \sum_{j \neq i} \log p(w_j | w_i) $$
+### 3. Methodology (핵심 모델 구조)
 
-여기서 모든 아이템에 대해 Softmax를 계산하면 비용이 너무 크기 때문에, **Negative Sampling**을 사용함. 즉, 실제로 같이 구매된 아이템(Positive)과는 내적값을 높이고, 랜덤하게 추출된 아이템(Negative)과는 내적값을 낮추는 방식으로 효율적으로 학습함.
+논문은 두 가지 아키텍처를 제안함.
 
-#### [B] Comparison with SVD
-논문에서는 기존 SVD 방식과 Item2Vec의 성능을 비교함.
+![CBOW vs Skip-gram Architecture](/images/CBOW_and_SKIPGRAM.png)
+<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 1. The architecture of CBOW and Skip-gram</em></p>
 
-![Item2Vec vs SVD t-SNE](/images/item2vec_2.png)
-<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 2. t-SNE visualization: Item2Vec(좌) vs SVD(우)</em></p>
+#### (1) CBOW (Continuous Bag-of-Words)
+- **개념:** 주변 단어들(Context)의 벡터를 평균(Average)내어 중심 단어(Target)를 예측
+- **특징:** 문맥을 뭉뚱그려(Smoothing) 처리하므로 학습이 빠르지만, 드물게 등장하는 단어에 대한 예측력은 다소 떨어짐.
 
-위 그림을 보면, Item2Vec은 비슷한 카테고리의 상품끼리(예: 액션 게임, 전략 게임) 매우 뚜렷하게 군집화(Clustering)되는 것을 볼 수 있음. 반면 SVD는 군집이 다소 뭉개지거나 섞여 있는 모습임. 이는 Item2Vec이 아이템 간의 **의미적 유사성(Semantic Similarity)**을 훨씬 더 잘 포착한다는 것을 보여줌.
+#### (2) Skip-gram (Selected for Project)
+- **개념:** 중심 단어(Target) 하나를 입력으로 받아, 주변에 올 수 있는 문맥 단어들(Context)을 역으로 예측
+- **Why Skip-gram?**
+    - 내 프로젝트인 유튜브 댓글 데이터는 구어체와 신조어가 많고 데이터의 절대량이 아주 방대하지 않음.
+    - 논문에 따르면 **Skip-gram은 소량의 데이터에서도 희귀 단어를 잘 찾아내며**, 중심 단어 하나로 여러 개의 학습 쌍(Pair)을 만들어내므로(Data Augmentation 효과) 내 프로젝트에 더 적합하다고 판단함.
 
-### 3. Experiments & Results (실험 결과)
+### 4. Mathematical Derivation (수식 유도 및 최적화)
 
-실제 데이터셋(Microsoft Xbox Music, 상품 데이터)을 이용한 실험에서도 Item2Vec의 우수성이 입증됨.
+단순히 라이브러리를 쓰는 것이 아니라 **Numpy로 밑바닥 구현**을 하기 위해 핵심 수식을 정리함.
 
-![Similarity Table](/images/item2vec_3.png)
-<p style="text-align: center; margin-top: 8px; color: #555;"><em>Figure 3. Top-k similar items for query items</em></p>
+#### (1) Objective Function
+Skip-gram의 목표는 주어진 중심 단어 $w_t$에 대해 주변 단어 $w_{t+j}$가 등장할 확률(Likelihood)을 최대화하는 것
 
-위 표는 특정 아이템(Query)을 입력했을 때 추천되는 상위 아이템들을 보여줌. Item2Vec은 단순히 같은 카테고리일 뿐만 아니라, 유저가 실제로 **"대체재(Substitutable)"** 혹은 **"보완재(Complementary)"**로 느낄만한 상품들을 매우 정교하게 찾아냄.
+$$ \frac{1}{T} \sum_{t=1}^{T} \sum_{-c \le j \le c, j \ne 0} \log p(w_{t+j} | w_t) $$
 
-### 4. Application (For Business)
-이 모델은 딜리버드코리아와 같은 글로벌 이커머스/물류 플랫폼에서 강력한 무기가 될 수 있음.
+#### (2) The Softmax Problem & Negative Sampling
+원래 확률 $p$를 구하려면 Softmax를 써야 함.
 
-1.  **User-less Recommendation:** 유저 로그인이 없거나 신규 유저라 하더라도, 현재 장바구니에 담은 물건 하나만 있다면 즉시 연관 상품을 추천할 수 있음.
-2.  **Cross-selling 전략:** "K-Pop 앨범을 산 외국인이 자주 같이 사는 화장품은?"과 같은 질문에 대해, 국가별/카테고리별 구매 로그만 학습시키면 즉시 인사이트를 얻을 수 있음.
-3.  **데이터 확장성:** SVD보다 대용량 데이터 처리에 유리하며, 새로운 상품이 추가되어도 재학습이 비교적 용이함.
+$$ p(w_O|w_I) = \frac{\exp({v'_{w_O}}^\top v_{w_I})}{\sum_{w=1}^{V} \exp({v'_w}^\top v_{w_I})} $$
+
+하지만 분모($\sum$)를 구하기 위해 100만 개($V$) 단어를 다 계산하는 것은 불가능. 이를 해결하기 위해 **Negative Sampling**을 도입함. 전체 단어를 다 보는 대신, **'정답 단어 1개'와 '오답(Noise) 단어 K개'**만을 비교하여 이진 분류 문제로 바꿈.
+
+**[Implementation Formula]**
+내일 구현할 최종 Loss Function은 다음과 같음:
+
+$$ J(\theta) = - \log \sigma({u_{target}}^T \cdot v_{center}) - \sum_{k=1}^{K} \log \sigma(- {u_{neg_k}}^T \cdot v_{center}) $$
+
+* 정답과는 내적값을 키우고(Log-Likelihood 증가), 오답과는 내적값을 줄이는(Minimize) 원리
+
+### 5. Conclusion & Next Step
+
+- **Insight:** Word2Vec은 단순한 카운팅이 아니라, **"비슷한 문맥에 등장하는 단어는 비슷한 의미를 가진다"**는 분포 가설을 수학적으로 가장 효율적으로 구현한 모델. 특히 'Syntactic(구문적)' 관계까지 벡터 연산으로 풀린다는 점이 인상적임.
+- **Next Step:** 다음 포스팅에서는 위에서 유도한 Negative Sampling Loss 수식을 **Python Numpy로 직접 구현**하여, 실제 댓글 데이터가 벡터 공간에서 어떻게 군집화되는지 시각화해볼 예정
+
+---
+### References
+- [Efficient Estimation of Word Representations in Vector Space (Mikolov et al., 2013)](https://arxiv.org/abs/1301.3781)
+- [Distributed Representations of Words and Phrases and their Compositionality (Mikolov et al., 2013)](https://arxiv.org/abs/1310.4546)
