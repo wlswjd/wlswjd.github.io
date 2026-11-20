@@ -42,7 +42,7 @@ export default function Header() {
             Youtube RAG ↗
           </a>
           <a href="/portfolio.pdf" onClick={handlePortfolioClick} className="nes-btn is-error nav-btn">PORTFOLIO</a>
-          <Link href="/search" className="nes-btn is-warning nav-btn">SEARCH</Link>
+          <Link href="/search" className="nes-btn is-warning nav-btn">GAME</Link>
         </nav>
       </div>
       <hr className="header-divider" />

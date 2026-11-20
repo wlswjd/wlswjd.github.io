@@ -3,12 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const SEARCH_TAB = { label: '검색', href: '/search' }
-
 const TABS = [
   { label: '홈', href: '/' },
   { label: 'STUDY', href: '/category/study' },
   { label: 'PROJECT', href: '/category/project' },
+  { label: 'GAME', href: '/search' },
   { label: 'DAILY', href: '/category/daily' },
 ]
 
@@ -43,13 +42,6 @@ export default function DiaryTabs() {
       <a href="/portfolio.pdf" onClick={handlePortfolioClick} className="diary-tab">
         PORTFOLIO
       </a>
-      <Link
-        href={SEARCH_TAB.href}
-        className={`diary-tab ${pathname.startsWith(SEARCH_TAB.href) ? 'active' : ''}`}
-        aria-current={pathname.startsWith(SEARCH_TAB.href) ? 'page' : undefined}
-      >
-        {SEARCH_TAB.label}
-      </Link>
     </nav>
   )
 }

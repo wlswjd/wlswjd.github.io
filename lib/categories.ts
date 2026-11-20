@@ -25,7 +25,6 @@ export const CATEGORY_TREE: Category[] = [
     children: [
       { id: 'side-project', label: '사이드프로젝트 (SideProject)', path: ['project', 'side-project'] },
       { id: 'competition', label: '경진대회 (Competition)', path: ['project', 'competition'] },
-      { id: 'game-qa', label: 'Game QA', path: ['project', 'game-qa'] },
     ],
   },
   {
